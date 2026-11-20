@@ -1,0 +1,1763 @@
+<!DOCTYPE html>
+<html la="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>La Mesa Boliviana | Comida Típica Boliviana en Santa Cruz de la Sierra</title>
+  <meta name="description" content="Disfruta el auténtico sabor de la gastronomía tradicional boliviana en Santa Cruz de la Sierra. Consulta nuestro catálogo y realiza tu pedido directo por WhatsApp." />
+
+  <!-- Tipografías Google Fonts: Fraunces (títulos gastronómicos) e Inter (interfaz legible) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            display: ['Fraunces', 'Georgia', 'serif'],
+          },
+          colors: {
+            crema: {
+              50: '#FDF9F3',
+              100: '#F9F0E3',
+              200: '#EFE0CA',
+              300: '#DEC4A1',
+            },
+            aji: {
+              500: '#C83E32',
+              600: '#B02E23',
+              700: '#8F2219',
+            },
+            maiz: {
+              400: '#F2A922',
+              500: '#D98A14',
+              600: '#B56E09',
+            },
+            cacao: {
+              700: '#4A3226',
+              800: '#332017',
+              900: '#21130D',
+            },
+            wa: {
+              500: '#25D366',
+              600: '#1DA851',
+              700: '#168740',
+            }
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Estilos personalizados mínimos complementarios (animaciones y barra de desplazamiento) -->
+  <style>
+    /* Franja decorativa sutil inspirada en tejidos tradicionales bolivianos */
+    .aguayo-border {
+      height: 5px;
+      background: linear-gradient(
+        90deg,
+        #B02E23 0%,
+        #B02E23 20%,
+        #D98A14 20%,
+        #D98A14 40%,
+        #2E7D32 40%,
+        #2E7D32 60%,
+        #E65100 60%,
+        #E65100 80%,
+        #8F2219 80%,
+        #8F2219 100%
+      );
+    }
+
+    /* Ocultar scrollbar en pestañas horizontales móviles manteniendo desplazamiento táctil */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* Animación suave para notificaciones toast */
+    @keyframes slideUpFade {
+      from {
+        opacity: 0;
+        transform: translateY(14px) scale(0.97);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+    .toast-enter {
+      animation: slideUpFade 0.25s ease-out forwards;
+    }
+  </style>
+</head>
+
+<body class="bg-crema-50 text-cacao-900 font-sans antialiased selection:bg-aji-600 selection:text-white overflow-x-hidden">
+
+  <!-- =====================================================================
+       BARRA SUPERIOR DE IDENTIDAD CULTURAL Y NAVEGACIÓN PRINCIPAL
+       ===================================================================== -->
+  <div class="aguayo-border w-full" aria-hidden="true"></div>
+
+  <header class="sticky top-0 z-40 bg-crema-50/95 backdrop-blur-md border-b border-crema-200 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 sm:h-20">
+        
+        <!-- Logotipo SVG artesanal + Nombre del restaurante -->
+        <a href="#inicio" class="flex items-center gap-3 group focus:outline-none">
+          <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-aji-600 text-crema-50 flex items-center justify-center shadow-md group-hover:bg-aji-700 transition-colors shrink-0">
+            <!-- Ícono SVG: Plato humeante y espiga/detalle andino-oriental -->
+            <svg class="w-7 h-7" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M12 9C12 7 13.5 6 13.5 4.5" stroke="#F2A922" stroke-width="2.2" stroke-linecap="round"/>
+              <path d="M18 8C18 6 19.5 5 19.5 3.5" stroke="#F2A922" stroke-width="2.2" stroke-linecap="round"/>
+              <path d="M24 9C24 7 25.5 6 25.5 4.5" stroke="#F2A922" stroke-width="2.2" stroke-linecap="round"/>
+              <path d="M6 19C6 25.6274 11.3726 30 18 30C24.6274 30 30 25.6274 30 19H6Z" fill="currentColor" fill-opacity="0.2" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+              <path d="M4 19H32" stroke="#F2A922" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M12 32.5H24" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div>
+            <span class="font-display font-bold text-lg sm:text-xl text-cacao-900 tracking-tight block leading-none">
+              La Mesa Boliviana
+            </span>
+            <span class="text-xs font-medium text-aji-600 tracking-wide uppercase mt-1 block">
+              Sabores de nuestra tierra
+            </span>
+          </div>
+        </a>
+
+        <!-- Enlaces de navegación (Escritorio) -->
+        <nav class="hidden md:flex items-center gap-7 text-sm font-semibold text-cacao-700" aria-label="Navegación principal">
+          <a href="#inicio" class="hover:text-aji-600 transition-colors py-2">Inicio</a>
+          <a href="#menu" class="hover:text-aji-600 transition-colors py-2">Nuestro Menú</a>
+          <a href="#nosotros" class="hover:text-aji-600 transition-colors py-2">Tradición</a>
+          <a href="#ubicacion" class="hover:text-aji-600 transition-colors py-2">Ubicación</a>
+        </nav>
+
+        <!-- Acciones rápidas: Botón Carrito -->
+        <div class="flex items-center gap-2 sm:gap-3">
+          <button
+            type="button"
+            id="btn-open-cart-header"
+            class="relative inline-flex items-center gap-2.5 bg-cacao-900 hover:bg-cacao-800 text-crema-50 font-semibold text-sm px-4 py-2.5 sm:px-5 sm:py-3 rounded-2xl shadow-sm transition-all active:scale-95 min-h-[44px]"
+            aria-label="Abrir carrito de pedidos"
+          >
+            <svg class="w-5 h-5 text-maiz-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+            </svg>
+            <span class="hidden sm:inline">Mi Pedido</span>
+            <span id="header-cart-count" class="inline-flex items-center justify-center min-w-[24px] h-6 px-1.5 text-xs font-bold rounded-full bg-aji-600 text-white">
+              0
+            </span>
+            <span id="header-cart-total" class="hidden lg:inline text-xs font-bold text-maiz-400 border-l border-cacao-700 pl-2.5">
+              Bs 0.00
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- =====================================================================
+       A. SECCIÓN DE INICIO (HERO + PRESENTACIÓN DEL RESTAURANTE)
+       ===================================================================== -->
+  <main>
+    <section id="inicio" class="relative overflow-hidden pt-8 pb-14 sm:pt-12 sm:pb-20 lg:pt-16 lg:pb-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          
+          <!-- Columna Izquierda: Mensaje Comercial y CTAs -->
+          <div class="lg:col-span-6 space-y-6 text-center lg:text-left">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-crema-200/80 border border-crema-300 text-cacao-800 text-xs sm:text-sm font-semibold">
+              <span class="w-2 h-2 rounded-full bg-aji-600 animate-pulse"></span>
+              Santa Cruz de la Sierra · Pedidos directos sin intermediarios
+            </div>
+
+            <h1 class="font-display font-extrabold text-3xl sm:text-5xl lg:text-[3.35rem] text-cacao-900 leading-[1.12] tracking-tight">
+              El auténtico sabor de la cocina tradicional <span class="text-aji-600">boliviana</span> en tu mesa.
+            </h1>
+
+            <p class="text-base sm:text-lg text-cacao-700 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+              En <strong>La Mesa Boliviana</strong> preparamos con receta casera y sazón de hogar los platos más emblemáticos de Bolivia y de nuestra querida tierra cruceña. Explora la carta, arma tu pedido en segundos y coordínalo directo por WhatsApp.
+            </p>
+
+            <!-- Botones principales de conversión -->
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-3.5 pt-2">
+              <a
+                href="#menu"
+                class="inline-flex items-center justify-center gap-2.5 bg-aji-600 hover:bg-aji-700 text-white font-bold text-base px-7 py-4 rounded-2xl shadow-lg shadow-aji-600/25 transition-all active:scale-95 min-h-[52px]"
+              >
+                <span>Ver nuestro menú</span>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
+              </a>
+
+              <a
+                href="https://wa.me/59162016619?text=Hola%20La%20Mesa%20Boliviana%2C%20quisiera%20consultar%20sobre%20el%20men%C3%BA%20del%20d%C3%ADa."
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center justify-center gap-2.5 bg-wa-600 hover:bg-wa-700 text-white font-bold text-base px-7 py-4 rounded-2xl shadow-lg shadow-wa-600/20 transition-all active:scale-95 min-h-[52px]"
+              >
+                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z"/>
+                </svg>
+                <span>Pedir por WhatsApp</span>
+              </a>
+            </div>
+
+            <!-- Indicadores de confianza -->
+            <div class="grid grid-cols-3 gap-3 pt-4 border-t border-crema-200 max-w-lg mx-auto lg:mx-0">
+              <div>
+                <p class="font-display font-bold text-lg sm:text-xl text-cacao-900">100% Casero</p>
+                <p class="text-xs text-cacao-700">Sazón tradicional</p>
+              </div>
+              <div>
+                <p class="font-display font-bold text-lg sm:text-xl text-cacao-900">Recojo o Envío</p>
+                <p class="text-xs text-cacao-700">Tú eliges cómo recibir</p>
+              </div>
+              <div>
+                <p class="font-display font-bold text-lg sm:text-xl text-cacao-900">Atención Directa</p>
+                <p class="text-xs text-cacao-700">WhatsApp 62016619</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Columna Derecha: Fotografía Principal Gastronómica -->
+          <div class="lg:col-span-6">
+            <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-crema-200 aspect-[4/3]">
+              <img
+                src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=85"
+                onerror="this.onerror=null;this.src='https://placehold.co/900x675/B02E23/FDF9F3?text=La+Mesa+Boliviana+-+Gastronomia+Tradicional';"
+                alt="Plato abundante de comida típica boliviana servido caliente"
+                class="w-full h-full object-cover"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-cacao-900/75 via-transparent to-transparent"></div>
+              <div class="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 bg-white/95 backdrop-blur-md rounded-2xl p-4 shadow-lg border border-crema-200 flex items-center justify-between gap-4">
+                <div>
+                  <span class="text-[11px] font-bold uppercase tracking-wider text-aji-600 block">
+                    Cocina Boliviana & Cruceña
+                  </span>
+                  <p class="font-display font-bold text-sm sm:text-base text-cacao-900">
+                    Porciones generosas preparadas al día
+                  </p>
+                </div>
+                <a href="#menu" class="shrink-0 bg-maiz-500 hover:bg-maiz-600 text-white text-xs sm:text-sm font-bold px-4 py-2.5 rounded-xl transition-colors">
+                  Explorar
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         PRESENTACIÓN BREVE DEL RESTAURANTE
+         ===================================================================== -->
+    <section id="nosotros" class="py-10 sm:py-14 bg-white border-y border-crema-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto text-center space-y-4">
+          <span class="text-xs font-bold uppercase tracking-widest text-aji-600">Nuestra Esencia</span>
+          <h2 class="font-display font-bold text-2xl sm:text-3xl text-cacao-900">
+            Tradición culinaria boliviana en el corazón de Santa Cruz
+          </h2>
+          <p class="text-sm sm:text-base text-cacao-700 leading-relaxed">
+            <strong>La Mesa Boliviana</strong> nace con el propósito de reunir en un solo lugar los sabores más queridos de los valles, el altiplano y el oriente boliviano. Trabajamos con ingredientes frescos, cocción lenta y el cariño de la cocina familiar, ofreciendo atención cercana tanto para recojo en nuestro local en la zona Virgen de Luján como para envío a domicilio.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         B. CATÁLOGO DE PRODUCTOS (BUSCADOR, FILTROS Y TARJETAS DE PLATOS)
+         ===================================================================== -->
+    <section id="menu" class="py-12 sm:py-16 lg:py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Encabezado de Sección + Aviso Transparente de Datos de Demostración -->
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-8">
+          <div class="space-y-2">
+            <span class="text-xs font-bold uppercase tracking-widest text-aji-600">Carta Digital</span>
+            <h2 class="font-display font-bold text-3xl sm:text-4xl text-cacao-900">
+              Nuestro Menú Típico
+            </h2>
+            <p class="text-sm sm:text-base text-cacao-700 max-w-2xl">
+              Selecciona tus platos favoritos, ajusta las cantidades en tu carrito y envía tu solicitud directamente a nuestro WhatsApp.
+            </p>
+          </div>
+
+          <!-- Aviso explícito de catálogo de demostración (Cumplimiento estricto regla de transparencia) -->
+          <div class="bg-amber-50 border border-amber-300 rounded-2xl p-3.5 sm:p-4 max-w-md shadow-xs">
+            <div class="flex items-start gap-2.5">
+              <svg class="w-5 h-5 text-amber-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <div class="text-xs text-amber-900 leading-relaxed">
+                <strong class="font-bold block">Catálogo de Demostración (Datos Referenciales)</strong>
+                Los platos, fotografías y precios en Bolivianos (Bs) mostrados en esta versión son ejemplos ilustrativos sujetos a confirmación oficial del restaurante.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Barra de Buscador y Filtros por Categorías -->
+        <div class="bg-white rounded-3xl p-4 sm:p-5 shadow-sm border border-crema-200 mb-8 space-y-4">
+          <!-- Buscador de platos -->
+          <div class="relative">
+            <label for="search-input" class="sr-only">Buscar plato o ingrediente</label>
+            <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
+              <svg class="h-5 w-5 text-cacao-700/60" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 115 11a6 6 0 0112 0z" />
+              </svg>
+            </div>
+            <input
+              type="search"
+              id="search-input"
+              placeholder="Buscar platos (ej. Majadito, Silpancho, Sopa de maní, Mocochinchi...)"
+              class="w-full rounded-2xl border border-crema-300 bg-crema-50/60 py-3.5 pl-11 pr-10 text-sm sm:text-base text-cacao-900 placeholder:text-cacao-700/50 focus:border-aji-600 focus:bg-white focus:outline-none focus:ring-2 focus:ring-aji-600/20 transition-all"
+            />
+            <button
+              type="button"
+              id="btn-clear-search"
+              class="hidden absolute inset-y-0 right-0 flex items-center pr-3.5 text-cacao-700 hover:text-aji-600"
+              aria-label="Limpiar búsqueda"
+            >
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+
+          <!-- Filtros horizontales por categoría -->
+          <div id="category-filters" class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1" role="tablist" aria-label="Categorías del menú">
+            <!-- Renderizado dinámicamente desde MENU_CATEGORIES -->
+          </div>
+        </div>
+
+        <!-- Contador de resultados -->
+        <div class="flex items-center justify-between mb-5 text-xs sm:text-sm text-cacao-700">
+          <p id="menu-results-count">Mostrando platos disponibles</p>
+          <span class="inline-flex items-center gap-1.5 font-medium">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span> Disponible
+            <span class="w-2.5 h-2.5 rounded-full bg-rose-500 ml-2"></span> Agotado
+          </span>
+        </div>
+
+        <!-- Grilla Responsive de Tarjetas de Productos -->
+        <div id="menu-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
+          <!-- Renderizado dinámicamente desde MENU_DATA -->
+        </div>
+
+        <!-- Estado vacío cuando no hay coincidencias de búsqueda -->
+        <div id="menu-empty-state" class="hidden text-center py-16 px-4 bg-white rounded-3xl border border-crema-200">
+          <div class="w-14 h-14 mx-auto rounded-2xl bg-crema-100 text-aji-600 flex items-center justify-center mb-4">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 115 11a6 6 0 0112 0z" />
+            </svg>
+          </div>
+          <h3 class="font-display font-bold text-xl text-cacao-900 mb-1">No encontramos ese plato</h3>
+          <p class="text-sm text-cacao-700 mb-5">Intenta con otro término o explora todas nuestras categorías.</p>
+          <button
+            type="button"
+            id="btn-reset-filters"
+            class="inline-flex items-center justify-center bg-aji-600 hover:bg-aji-700 text-white font-semibold text-sm px-5 py-3 rounded-xl transition-colors"
+          >
+            Ver todo el menú
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         8. SECCIÓN DE UBICACIÓN Y CONTACTO
+         ===================================================================== -->
+    <section id="ubicacion" class="py-12 sm:py-16 bg-cacao-900 text-crema-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          
+          <div class="lg:col-span-7 space-y-5">
+            <span class="text-xs font-bold uppercase tracking-widest text-maiz-400">Visítanos o Pide a Domicilio</span>
+            <h2 class="font-display font-bold text-3xl sm:text-4xl text-white">
+              Ubicación y Contacto Directo
+            </h2>
+            <p class="text-sm sm:text-base text-crema-200 leading-relaxed max-w-2xl">
+              Estamos ubicados en Santa Cruz de la Sierra para atender tus pedidos de recojo en el local y coordinar envíos a domicilio a través de nuestro canal oficial de WhatsApp.
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+              <!-- Tarjeta Dirección Comercial -->
+              <div class="bg-cacao-800/90 border border-cacao-700 rounded-2xl p-5 space-y-2">
+                <div class="w-10 h-10 rounded-xl bg-aji-600/20 text-maiz-400 flex items-center justify-center">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                </div>
+                <h3 class="font-bold text-base text-white">Dirección Comercial</h3>
+                <p class="text-sm text-crema-200 leading-relaxed">
+                  Avenida Virgen de Luján, calle Urkupiña, Santa Cruz de la Sierra, Bolivia.
+                </p>
+                <p class="text-xs text-crema-300/80 pt-1">
+                  Referencia: Zona Virgen de Luján (ubicación aproximada sujeta a confirmación al coordinar tu pedido).
+                </p>
+              </div>
+
+              <!-- Tarjeta WhatsApp Comercial -->
+              <div class="bg-cacao-800/90 border border-cacao-700 rounded-2xl p-5 space-y-2">
+                <div class="w-10 h-10 rounded-xl bg-wa-600/20 text-wa-500 flex items-center justify-center">
+                  <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z"/>
+                  </svg>
+                </div>
+                <h3 class="font-bold text-base text-white">WhatsApp de Pedidos</h3>
+                <p class="text-lg font-bold text-maiz-400">
+                  +591 62016619
+                </p>
+                <p class="text-xs text-crema-300/80 pt-1">
+                  Atención personalizada para pedidos, consultas de disponibilidad y confirmación de entrega.
+                </p>
+              </div>
+            </div>
+
+            <!-- Botones de acción de mapa y WhatsApp -->
+            <div class="flex flex-col sm:flex-row gap-3.5 pt-2">
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=Avenida+Virgen+de+Lujan+calle+Urkupina+Santa+Cruz+de+la+Sierra+Bolivia"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center justify-center gap-2.5 bg-white hover:bg-crema-100 text-cacao-900 font-bold text-sm sm:text-base px-6 py-3.5 rounded-2xl transition-all min-h-[48px]"
+              >
+                <svg class="w-5 h-5 text-aji-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+                </svg>
+                <span>Abrir en Google Maps</span>
+              </a>
+
+              <a
+                href="https://wa.me/59162016619?text=Hola%20La%20Mesa%20Boliviana%2C%20quisiera%20consultar%20su%20ubicaci%C3%B3n%20exacta."
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center justify-center gap-2.5 bg-wa-600 hover:bg-wa-700 text-white font-bold text-sm sm:text-base px-6 py-3.5 rounded-2xl transition-all min-h-[48px]"
+              >
+                <span>Escribir al 62016619</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Tarjeta visual de referencia geográfica (sin coordenadas inventadas) -->
+          <div class="lg:col-span-5">
+            <div class="bg-cacao-800 border border-cacao-700 rounded-3xl p-6 sm:p-8 space-y-5 shadow-xl">
+              <div class="flex items-center gap-3">
+                <span class="w-3 h-3 rounded-full bg-maiz-400"></span>
+                <span class="text-xs font-bold uppercase tracking-wider text-crema-200">Santa Cruz de la Sierra · Bolivia</span>
+              </div>
+              <div class="rounded-2xl bg-cacao-900/80 border border-cacao-700 p-5 space-y-3">
+                <p class="font-display font-bold text-xl text-white">La Mesa Boliviana</p>
+                <p class="text-sm text-crema-200">
+                  📍 Av. Virgen de Luján, calle Urkupiña
+                </p>
+                <p class="text-sm text-crema-200">
+                  📱 WhatsApp: <strong class="text-white">62016619</strong>
+                </p>
+                <div class="pt-3 border-t border-cacao-700 text-xs text-crema-300 leading-relaxed">
+                  Nota: Si vienes a recoger tu pedido en el local, te enviaremos el pin exacto por WhatsApp una vez confirmada tu orden.
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =====================================================================
+       PIE DE PÁGINA
+       ===================================================================== -->
+  <footer class="bg-cacao-900 border-t border-cacao-800 text-crema-300 py-8 pb-28 sm:pb-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm">
+      <div class="text-center sm:text-left">
+        <p class="font-display font-bold text-white text-base">La Mesa Boliviana</p>
+        <p class="text-crema-300/80 mt-0.5">Avenida Virgen de Luján, calle Urkupiña · Santa Cruz de la Sierra, Bolivia</p>
+      </div>
+      <div class="text-center sm:text-right">
+        <p>Pedidos directos: <a href="https://wa.me/59162016619" target="_blank" rel="noopener noreferrer" class="text-maiz-400 font-semibold hover:underline">WhatsApp 62016619</a></p>
+        <p class="text-xs text-crema-300/60 mt-0.5">Catálogo web interactivo · Precios referenciales de demostración</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =====================================================================
+       BOTÓN FLOTANTE DE WHATSAPP + BARRA INFERIOR MÓVIL DE CARRITO
+       ===================================================================== -->
+  <a
+    href="https://wa.me/59162016619?text=Hola%20La%20Mesa%20Boliviana%2C%20tengo%20una%20consulta."
+    target="_blank"
+    rel="noopener noreferrer"
+    id="floating-whatsapp-btn"
+    class="fixed right-4 bottom-24 sm:bottom-6 z-30 inline-flex items-center gap-2.5 bg-wa-600 hover:bg-wa-700 text-white font-bold px-4 py-3.5 rounded-full shadow-xl shadow-wa-700/30 transition-transform hover:scale-105 active:scale-95"
+    aria-label="Contactar a La Mesa Boliviana por WhatsApp"
+  >
+    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z"/>
+    </svg>
+    <span class="hidden md:inline text-sm">WhatsApp</span>
+  </a>
+
+  <!-- Barra sticky inferior en móviles para abrir rápido el carrito -->
+  <div id="mobile-sticky-cart-bar" class="sm:hidden fixed bottom-0 inset-x-0 z-30 bg-white/95 backdrop-blur-md border-t border-crema-200 p-3 shadow-2xl">
+    <button
+      type="button"
+      id="btn-open-cart-mobile"
+      class="w-full flex items-center justify-between bg-cacao-900 text-white font-bold px-5 py-3.5 rounded-2xl shadow-md active:scale-[0.99] transition-transform"
+    >
+      <span class="flex items-center gap-2.5">
+        <span id="mobile-cart-badge" class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-aji-600 text-xs font-extrabold">
+          0
+        </span>
+        <span class="text-sm">Ver mi pedido</span>
+      </span>
+      <span id="mobile-cart-total" class="text-sm font-extrabold text-maiz-400">
+        Bs 0.00
+      </span>
+    </button>
+  </div>
+
+  <!-- Contenedor de mensajes visuales Toast -->
+  <div id="toast-container" class="fixed top-20 right-4 z-50 flex flex-col gap-2.5 max-w-xs sm:max-w-sm pointer-events-none" aria-live="polite"></div>
+
+  <!-- =====================================================================
+       C & D. PANEL LATERAL DEL CARRITO DE COMPRAS Y DATOS DEL CLIENTE
+       ===================================================================== -->
+  <div id="cart-drawer-overlay" class="fixed inset-0 z-50 hidden" role="dialog" aria-modal="true" aria-labelledby="cart-drawer-title">
+    <!-- Fondo oscuro con cierre al clic -->
+    <div id="cart-backdrop" class="fixed inset-0 bg-cacao-900/60 backdrop-blur-xs transition-opacity"></div>
+
+    <!-- Panel deslizante derecho -->
+    <div class="fixed inset-y-0 right-0 max-w-full flex pl-4 sm:pl-10">
+      <div class="w-screen max-w-lg bg-crema-50 shadow-2xl flex flex-col h-full border-l border-crema-200">
+        
+        <!-- Cabecera del Carrito -->
+        <div class="px-5 py-4 bg-white border-b border-crema-200 flex items-center justify-between shrink-0">
+          <div>
+            <h2 id="cart-drawer-title" class="font-display font-bold text-xl text-cacao-900">
+              Tu Pedido
+            </h2>
+            <p class="text-xs text-cacao-700">Revisa tus platos y completa tus datos</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <button
+              type="button"
+              id="btn-clear-cart"
+              class="hidden text-xs font-semibold text-rose-600 hover:text-rose-700 px-2.5 py-1.5 rounded-lg hover:bg-rose-50 transition-colors"
+            >
+              Vaciar
+            </button>
+            <button
+              type="button"
+              id="btn-close-cart"
+              class="w-10 h-10 rounded-xl bg-crema-100 hover:bg-crema-200 text-cacao-900 flex items-center justify-center transition-colors"
+              aria-label="Cerrar carrito"
+            >
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Contenido desplazable del Carrito + Formulario -->
+        <div class="flex-1 overflow-y-auto px-5 py-5 space-y-6">
+          
+          <!-- Lista de productos seleccionados -->
+          <div id="cart-items-container" class="space-y-3">
+            <!-- Renderizado dinámicamente -->
+          </div>
+
+          <!-- Estado carrito vacío -->
+          <div id="cart-empty-view" class="text-center py-12 px-4 bg-white rounded-3xl border border-crema-200">
+            <div class="w-14 h-14 mx-auto rounded-2xl bg-crema-100 text-aji-600 flex items-center justify-center mb-3">
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+              </svg>
+            </div>
+            <h3 class="font-display font-bold text-lg text-cacao-900">Tu carrito está vacío</h3>
+            <p class="text-xs sm:text-sm text-cacao-700 mt-1 mb-5">
+              Agrega platos tradicionales desde nuestro menú para armar tu pedido.
+            </p>
+            <button
+              type="button"
+              id="btn-empty-browse"
+              class="bg-aji-600 hover:bg-aji-700 text-white font-semibold text-sm px-5 py-3 rounded-xl transition-colors"
+            >
+              Explorar el menú
+            </button>
+          </div>
+
+          <!-- D. FORMULARIO DE DATOS DEL CLIENTE (Visible cuando hay productos) -->
+          <form id="checkout-form" class="hidden space-y-5" novalidate>
+            
+            <!-- Resumen de Totales -->
+            <div class="bg-white rounded-2xl p-4 border border-crema-200 space-y-2.5 shadow-xs">
+              <h3 class="font-bold text-sm text-cacao-900 uppercase tracking-wider border-b border-crema-100 pb-2">
+                Resumen del Pedido
+              </h3>
+              <div class="flex justify-between text-sm text-cacao-700">
+                <span>Subtotal platos</span>
+                <span id="summary-subtotal" class="font-semibold text-cacao-900">Bs 0.00</span>
+              </div>
+              <div id="summary-delivery-row" class="flex justify-between text-sm text-cacao-700">
+                <span>Costo de entrega</span>
+                <span id="summary-delivery-cost" class="font-medium text-cacao-800">A confirmar por WhatsApp</span>
+              </div>
+              <div class="flex justify-between items-baseline pt-2 border-t border-crema-200">
+                <span class="font-bold text-base text-cacao-900">Total estimado</span>
+                <span id="summary-total" class="font-display font-extrabold text-xl text-aji-600">Bs 0.00</span>
+              </div>
+              <p class="text-[11px] text-cacao-700/80">
+                * Precios de referencia (catálogo demo) sujetos a confirmación comercial del local.
+              </p>
+            </div>
+
+            <!-- Datos Personales y Modalidad -->
+            <div class="bg-white rounded-2xl p-4 sm:p-5 border border-crema-200 space-y-4 shadow-xs">
+              <h3 class="font-bold text-sm text-cacao-900 uppercase tracking-wider border-b border-crema-100 pb-2">
+                Datos para tu Pedido
+              </h3>
+
+              <!-- Nombre del cliente -->
+              <div>
+                <label for="customer-name" class="block text-xs font-bold text-cacao-800 mb-1.5">
+                  Nombre del cliente <span class="text-aji-600">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="customer-name"
+                  name="nombre"
+                  required
+                  placeholder="Ej. Carlos Mamani"
+                  class="w-full rounded-xl border border-crema-300 bg-crema-50/50 px-3.5 py-3 text-sm text-cacao-900 focus:border-aji-600 focus:bg-white focus:outline-none focus:ring-2 focus:ring-aji-600/20"
+                />
+                <p id="error-name" class="hidden text-xs text-rose-600 font-medium mt-1">Por favor ingresa tu nombre.</p>
+              </div>
+
+              <!-- Número de contacto -->
+              <div>
+                <label for="customer-phone" class="block text-xs font-bold text-cacao-800 mb-1.5">
+                  Número de contacto / WhatsApp <span class="text-aji-600">*</span>
+                </label>
+                <input
+                  type="tel"
+                  id="customer-phone"
+                  name="telefono"
+                  required
+                  placeholder="Ej. 71234567"
+                  class="w-full rounded-xl border border-crema-300 bg-crema-50/50 px-3.5 py-3 text-sm text-cacao-900 focus:border-aji-600 focus:bg-white focus:outline-none focus:ring-2 focus:ring-aji-600/20"
+                />
+                <p id="error-phone" class="hidden text-xs text-rose-600 font-medium mt-1">Ingresa un número de teléfono válido (mínimo 7 dígitos).</p>
+              </div>
+
+              <!-- Modalidad del pedido: Entrega a domicilio vs Recojo en el local -->
+              <div>
+                <span class="block text-xs font-bold text-cacao-800 mb-2">
+                  Modalidad del pedido <span class="text-aji-600">*</span>
+                </span>
+                <div class="grid grid-cols-2 gap-2.5" role="radiogroup" aria-label="Modalidad del pedido">
+                  <button
+                    type="button"
+                    data-modality="domicilio"
+                    class="modality-btn flex flex-col items-center justify-center gap-1 p-3 rounded-xl border-2 border-aji-600 bg-aji-600/5 text-aji-700 font-bold text-xs sm:text-sm transition-all min-h-[56px]"
+                  >
+                    <span>🛵 Entrega a domicilio</span>
+                  </button>
+                  <button
+                    type="button"
+                    data-modality="recojo"
+                    class="modality-btn flex flex-col items-center justify-center gap-1 p-3 rounded-xl border-2 border-crema-200 bg-white text-cacao-700 font-semibold text-xs sm:text-sm hover:border-crema-300 transition-all min-h-[56px]"
+                  >
+                    <span>🏪 Recojo en el local</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Dirección de entrega (SOLO se muestra cuando modalidad === 'domicilio') -->
+              <div id="delivery-address-wrapper" class="space-y-1.5">
+                <label for="customer-address" class="block text-xs font-bold text-cacao-800">
+                  Dirección de entrega y referencia <span class="text-aji-600">*</span>
+                </label>
+                <textarea
+                  id="customer-address"
+                  name="direccion"
+                  rows="2"
+                  placeholder="Ej. Barrio Equipetrol, Calle 5 Este #24, portón café..."
+                  class="w-full rounded-xl border border-crema-300 bg-crema-50/50 px-3.5 py-2.5 text-sm text-cacao-900 focus:border-aji-600 focus:bg-white focus:outline-none focus:ring-2 focus:ring-aji-600/20"
+                ></textarea>
+                <p id="error-address" class="hidden text-xs text-rose-600 font-medium">Por favor indica la dirección exacta para la entrega a domicilio.</p>
+              </div>
+
+              <!-- Observaciones adicionales -->
+              <div>
+                <label for="customer-notes" class="block text-xs font-bold text-cacao-800 mb-1.5">
+                  Observaciones adicionales (opcional)
+                </label>
+                <textarea
+                  id="customer-notes"
+                  name="observaciones"
+                  rows="2"
+                  placeholder="Ej. Llajua aparte, sin cebolla, pagaré con QR o billete de Bs 100..."
+                  class="w-full rounded-xl border border-crema-300 bg-crema-50/50 px-3.5 py-2.5 text-sm text-cacao-900 focus:border-aji-600 focus:bg-white focus:outline-none focus:ring-2 focus:ring-aji-600/20"
+                ></textarea>
+              </div>
+            </div>
+
+            <!-- Botón principal para revisar y confirmar por WhatsApp -->
+            <div class="pt-1 pb-4">
+              <button
+                type="submit"
+                id="btn-prepare-whatsapp"
+                class="w-full flex items-center justify-center gap-2.5 bg-wa-600 hover:bg-wa-700 text-white font-bold text-base px-6 py-4 rounded-2xl shadow-lg shadow-wa-600/25 transition-all active:scale-[0.99] min-h-[54px]"
+              >
+                <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z"/>
+                </svg>
+                <span>Confirmar pedido por WhatsApp</span>
+              </button>
+            </div>
+
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       E. MODAL DE REVISIÓN PREVIA DEL MENSAJE DE WHATSAPP
+       (Permite revisar el mensaje estructurado antes de abrir WhatsApp)
+       ===================================================================== -->
+  <div id="wa-preview-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="wa-modal-title">
+    <div id="wa-modal-backdrop" class="fixed inset-0 bg-cacao-900/70 backdrop-blur-xs"></div>
+
+    <div class="relative z-10 w-full max-w-lg bg-white rounded-3xl shadow-2xl border border-crema-200 overflow-hidden">
+      <!-- Cabecera Modal -->
+      <div class="bg-cacao-900 text-white px-6 py-4 flex items-center justify-between">
+        <div>
+          <h3 id="wa-modal-title" class="font-display font-bold text-lg">Revisa tu Pedido antes de Enviar</h3>
+          <p class="text-xs text-crema-200">Destino: WhatsApp La Mesa Boliviana (62016619)</p>
+        </div>
+        <button
+          type="button"
+          id="btn-close-wa-modal"
+          class="w-9 h-9 rounded-xl bg-cacao-800 hover:bg-cacao-700 text-crema-100 flex items-center justify-center"
+          aria-label="Cerrar vista previa"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="p-5 sm:p-6 space-y-4">
+        <!-- Vista previa del texto exacto que se enviará a WhatsApp -->
+        <div>
+          <div class="flex items-center justify-between mb-1.5">
+            <span class="text-xs font-bold uppercase tracking-wider text-cacao-700">Mensaje generado:</span>
+            <button
+              type="button"
+              id="btn-copy-wa-message"
+              class="text-xs font-semibold text-aji-600 hover:text-aji-700 underline"
+            >
+              Copiar texto
+            </button>
+          </div>
+          <pre id="wa-message-preview-box" class="bg-crema-50 border border-crema-300 rounded-2xl p-4 text-xs sm:text-sm text-cacao-900 whitespace-pre-wrap font-sans max-h-64 overflow-y-auto leading-relaxed"></pre>
+        </div>
+
+        <!-- Aviso obligatorio sobre recepción y confirmación comercial -->
+        <div class="bg-amber-50 border border-amber-300 rounded-2xl p-3.5 text-xs text-amber-950 leading-relaxed">
+          <strong class="font-bold block mb-0.5">IMPORTANTE:</strong>
+          Abrir WhatsApp no significa que el pedido haya sido recibido o confirmado. Presiona <strong>"Enviar"</strong> dentro de WhatsApp y aguarda la confirmación comercial directa del restaurante.
+        </div>
+
+        <!-- Botones de acción -->
+        <div class="flex flex-col sm:flex-row gap-3 pt-1">
+          <button
+            type="button"
+            id="btn-edit-order"
+            class="sm:w-1/3 inline-flex items-center justify-center bg-crema-100 hover:bg-crema-200 text-cacao-900 font-bold text-sm px-4 py-3.5 rounded-2xl transition-colors"
+          >
+            Editar datos
+          </button>
+          <a
+            id="btn-send-whatsapp-final"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="sm:w-2/3 inline-flex items-center justify-center gap-2 bg-wa-600 hover:bg-wa-700 text-white font-bold text-sm sm:text-base px-5 py-3.5 rounded-2xl shadow-lg shadow-wa-600/25 transition-all"
+          >
+            <span>Abrir WhatsApp y Enviar</span>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       JAVASCRIPT MODULAR Y DOCUMENTADO
+       (Estructurado por capas: CONFIG, DATA, STORAGE, FORMATTERS, UI)
+       ===================================================================== -->
+  <script>
+    /**
+     * 1. CONFIGURACIÓN CENTRAL DEL NEGOCIO
+     * Modifica estos valores fácilmente para actualizar el número de WhatsApp,
+     * moneda o costo de envío fijo (si se desea configurar).
+     */
+    const RESTAURANT_CONFIG = {
+      nombre: 'La Mesa Boliviana',
+      whatsappNumber: '59162016619', // Código país Bolivia (+591) + 62016619
+      moneda: 'Bs',
+      // Si costoEntregaDomicilio es 0, se mostrará "A confirmar por WhatsApp".
+      // Si se configura un monto mayor a 0 (ej. 10), se sumará automáticamente al total.
+      costoEntregaDomicilio: 0,
+      storageKeys: {
+        cart: 'la_mesa_boliviana_cart_v1',
+        customer: 'la_mesa_boliviana_customer_v1'
+      }
+    };
+
+    /**
+     * 2. CATEGORÍAS EDITABLES DEL MENÚ
+     */
+    const MENU_CATEGORIES = [
+      { id: 'todos', nombre: 'Todos los platos' },
+      { id: 'platos-tipicos', nombre: 'Platos típicos bolivianos' },
+      { id: 'comida-crucena', nombre: 'Comida tradicional cruceña' },
+      { id: 'sopas', nombre: 'Sopas' },
+      { id: 'especialidades', nombre: 'Especialidades de la casa' },
+      { id: 'bebidas', nombre: 'Bebidas' },
+      { id: 'postres', nombre: 'Postres' }
+    ];
+
+    /**
+     * 3. CATÁLOGO DE PRODUCTOS (DATOS DE DEMOSTRACIÓN EDITABLES)
+     * Nota: Todos los ítems están marcados explícitamente como referenciales/demo
+     * hasta que el restaurante proporcione sus precios y platos definitivos.
+     */
+    const MENU_DATA = [
+      {
+        id: 'majadito-batido',
+        nombre: 'Majadito Batido de Charque',
+        categoria: 'comida-crucena',
+        precio: 38.00,
+        descripcion: 'Arroz cocido con charque desmenuzado y urucú, acompañado de huevo frito, plátano maduro frito y ensalada fresca.',
+        disponible: true,
+        etiqueta: 'Demo · Cruceño',
+        imagen: 'https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=800&q=80'
+      },
+      {
+        id: 'silpancho-cochabambino',
+        nombre: 'Silpancho Cochabambino',
+        categoria: 'platos-tipicos',
+        precio: 40.00,
+        descripcion: 'Base de arroz y papas doradas, carne apanada jugosa, dos huevos fritos y zarza fresca de tomate, cebolla y locoto.',
+        disponible: true,
+        etiqueta: 'Demo · Tradicional',
+        imagen: 'https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?auto=format&fit=crop&w=800&q=80'
+      },
+      {
+        id: 'sopa-de-mani',
+        nombre: 'Sopa de Maní Tradicional',
+        categoria: 'sopas',
+        precio: 22.00,
+        descripcion: 'Cremosa sopa de maní tostado y molido, con presa de carne, verduras frescas, arvejas y coronada con papas fritas al hilo.',
+        disponible: true,
+        etiqueta: 'Demo · Sopa',
+        imagen: 'https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=800&q=80'
+      },
+      {
+        id: 'saice-tarijeno',
+        nombre: 'Saice Tarijeño',
+        categoria: 'platos-tipicos',
+        precio: 36.00,
+        descripcion: 'Guiso tradicional de carne picada en salsa de ají colorado con arvejas, servido con arroz, chuño phuti y ensalada criolla.',
+        disponible: true,
+        etiqueta: 'Demo · Tradicional',
+        imagen: 'https://images.unsplash.com/photo-1534939561126-855b8675edd7?auto=format&fit=crop&w=800&q=80'
+      },
+      {
+        id: 'locro-carretero',
+        nombre: 'Locro Carretero Cruceño',
+        categoria: 'comida-crucena',
+        precio: 28.00,
+        descripcion: 'Sustancioso caldo tradicional del oriente boliviano preparado con arroz, charque, plátano verde y cebollita verde.',
+        disponible: true,
+        etiqueta: 'Demo · Cruceño',
+        imagen: 'https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=800&q=80'
+      },
+      {
+        id: 'picante-de-pollo',
+        nombre: 'Picante de Pollo Especial',
+        categoria: 'especialidades',
+        precio: 38.00,
+        descripcion: 'Presas de pollo tiernas en salsa aromática de ají amarillo y rojo, acompañadas de papa blanca, tunta rebosada y arroz.',
+        disponible: true,
+        etiqueta: 'Demo · Especialidad',
+        imagen: 'https://images.unsplash.com/photo-1598103442097-8b74394b95c6?auto=format&fit=crop&w=800&q=80'
+      },
+      {
+        id: 'keperi-al-horno',
+        nombre: 'Keperí al Horno con Yuca',
+        categoria: 'comida-crucena',
+        precio: 45.00,
+        descripcion: 'Corte tradicional de res horneado lentamente con limón y especias, servido con yuca cocida, arroz con queso y ensalada.',
+        disponible: true,
+        etiqueta: 'Demo · Cruceño',
+        imagen: 'https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=800&q=80'
+      },
+      {
+        id: 'pique-macho-demo',
+        nombre: 'Pique Macho para Compartir',
+        categoria: 'especialidades',
+        precio: 65.00,
+        descripcion: 'Trozos jugosos de lomo de res y salchicha salteados con cebolla, tomate, locoto, papas fritas y huevo duro.',
+        disponible: false, // Ejemplo visual de producto agotado
+        etiqueta: 'Demo · Agotado',
+        imagen: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=800&q=80'
+      },
+      {
+        id: 'chairo-paceno',
+        nombre: 'Chairo Paceño',
+        categoria: 'sopas',
+        precio: 24.00,
+        descripcion: 'Sopa tradicional andina con chuño aplastado, carne de res, trigo mote, habas y hierbabuena fresca.',
+        disponible: true,
+        etiqueta: 'Demo · Sopa',
+        imagen: 'https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=800&q=80'
+      },
+      {
+        id: 'mocochinchi-jarra',
+        nombre: 'Refresco de Mocochinchi (1 Litro)',
+        categoria: 'bebidas',
+        precio: 15.00,
+        descripcion: 'Bebida tradicional boliviana elaborada con durazno deshidratado hervido con canela y clavo de olor, servida bien fría.',
+        disponible: true,
+        etiqueta: 'Demo · Bebida',
+        imagen: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=800&q=80'
+      },
+      {
+        id: 'somo-cruceno',
+        nombre: 'Somó Tradicional Cruceño (Vaso 500 ml)',
+        categoria: 'bebidas',
+        precio: 10.00,
+        descripcion: 'Refrescante bebida típica de maíz frangollo cocido con canela y un toque dulce tradicional.',
+        disponible: true,
+        etiqueta: 'Demo · Bebida',
+        imagen: 'https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=80'
+      },
+      {
+        id: 'cunape-artesanal',
+        nombre: 'Porción de Cuñapés Artesanales (4 unid.)',
+        categoria: 'postres',
+        precio: 14.00,
+        descripcion: 'Horneados tradicionales cruceños de almidón de yuca y queso fresco, crujientes por fuera y suaves por dentro.',
+        disponible: true,
+        etiqueta: 'Demo · Hornear',
+        imagen: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80'
+      }
+    ];
+
+    /**
+     * 4. ESTADO DE LA APLICACIÓN Y PERSISTENCIA EN LOCALSTORAGE
+     */
+    const AppState = {
+      activeCategory: 'todos',
+      searchQuery: '',
+      cart: [],
+      customer: {
+        nombre: '',
+        telefono: '',
+        modalidad: 'domicilio', // 'domicilio' | 'recojo'
+        direccion: '',
+        observaciones: ''
+      }
+    };
+
+    const StorageService = {
+      loadState() {
+        try {
+          const savedCart = localStorage.getItem(RESTAURANT_CONFIG.storageKeys.cart);
+          if (savedCart) {
+            const parsed = JSON.parse(savedCart);
+            if (Array.isArray(parsed)) {
+              AppState.cart = parsed;
+            }
+          }
+          const savedCustomer = localStorage.getItem(RESTAURANT_CONFIG.storageKeys.customer);
+          if (savedCustomer) {
+            const parsedCustomer = JSON.parse(savedCustomer);
+            if (parsedCustomer && typeof parsedCustomer === 'object') {
+              AppState.customer = { ...AppState.customer, ...parsedCustomer };
+            }
+          }
+        } catch (error) {
+          console.warn('No se pudo leer el almacenamiento local:', error);
+        }
+      },
+
+      saveCart() {
+        try {
+          localStorage.setItem(RESTAURANT_CONFIG.storageKeys.cart, JSON.stringify(AppState.cart));
+        } catch (error) {
+          console.warn('No se pudo guardar el carrito en localStorage:', error);
+        }
+      },
+
+      saveCustomer() {
+        try {
+          localStorage.setItem(RESTAURANT_CONFIG.storageKeys.customer, JSON.stringify(AppState.customer));
+        } catch (error) {
+          console.warn('No se pudieron guardar los datos del cliente:', error);
+        }
+      }
+    };
+
+    /**
+     * 5. UTILIDADES DE FORMATO Y CÁLCULO MONETARIO (BOLIVIANOS)
+     */
+    function formatCurrencyBs(amount) {
+      const numeric = Number(amount) || 0;
+      return `${RESTAURANT_CONFIG.moneda} ${numeric.toFixed(2)}`;
+    }
+
+    function calculateTotals() {
+      const subtotal = AppState.cart.reduce((acc, item) => {
+        return acc + (Number(item.precio) * Number(item.cantidad));
+      }, 0);
+
+      const isDelivery = AppState.customer.modalidad === 'domicilio';
+      const deliveryCost = isDelivery ? Number(RESTAURANT_CONFIG.costoEntregaDomicilio || 0) : 0;
+      const total = subtotal + deliveryCost;
+      const totalItems = AppState.cart.reduce((acc, item) => acc + Number(item.cantidad), 0);
+
+      return {
+        subtotal,
+        deliveryCost,
+        total,
+        totalItems,
+        isDelivery
+      };
+    }
+
+    /**
+     * 6. LÓGICA DEL CARRITO DE COMPRAS
+     */
+    const CartService = {
+      addItem(productId) {
+        const product = MENU_DATA.find((p) => p.id === productId);
+        if (!product || !product.disponible) return;
+
+        const existingIndex = AppState.cart.findIndex((item) => item.id === productId);
+        if (existingIndex > -1) {
+          AppState.cart[existingIndex].cantidad += 1;
+        } else {
+          AppState.cart.push({
+            id: product.id,
+            nombre: product.nombre,
+            precio: product.precio,
+            imagen: product.imagen,
+            cantidad: 1,
+            nota: ''
+          });
+        }
+
+        StorageService.saveCart();
+        UI.updateCartUI();
+        UI.showToast(`Agregado: ${product.nombre}`);
+      },
+
+      updateQuantity(productId, delta) {
+        const index = AppState.cart.findIndex((item) => item.id === productId);
+        if (index === -1) return;
+
+        const nextQty = AppState.cart[index].cantidad + delta;
+        if (nextQty <= 0) {
+          AppState.cart.splice(index, 1);
+        } else {
+          AppState.cart[index].cantidad = nextQty;
+        }
+
+        StorageService.saveCart();
+        UI.updateCartUI();
+      },
+
+      updateItemNote(productId, noteText) {
+        const item = AppState.cart.find((entry) => entry.id === productId);
+        if (item) {
+          item.nota = noteText;
+          StorageService.saveCart();
+        }
+      },
+
+      removeItem(productId) {
+        AppState.cart = AppState.cart.filter((item) => item.id !== productId);
+        StorageService.saveCart();
+        UI.updateCartUI();
+        UI.showToast('Plato eliminado del pedido', 'neutral');
+      },
+
+      clearCart() {
+        AppState.cart = [];
+        StorageService.saveCart();
+        UI.updateCartUI();
+        UI.showToast('Carrito vaciado', 'neutral');
+      }
+    };
+
+    /**
+     * 7. GENERADOR DE MENSAJE ESTRUCTURADO PARA WHATSAPP
+     */
+    const WhatsAppService = {
+      buildOrderMessage() {
+        const { subtotal, deliveryCost, total, isDelivery } = calculateTotals();
+        const { nombre, telefono, direccion, observaciones } = AppState.customer;
+
+        const lines = [
+          `*PEDIDO ONLINE — ${RESTAURANT_CONFIG.nombre.toUpperCase()}*`,
+          `_(Catálogo referencial sujeto a confirmación del local)_`,
+          ``,
+          `*DATOS DEL CLIENTE:*`,
+          `• Nombre: ${nombre.trim()}`,
+          `• Contacto: ${telefono.trim()}`,
+          `• Modalidad: ${isDelivery ? 'Entrega a domicilio' : 'Recojo en el local'}`
+        ];
+
+        // Incluir dirección SOLO cuando es entrega a domicilio
+        if (isDelivery && direccion.trim()) {
+          lines.push(`• Dirección de entrega: ${direccion.trim()}`);
+        }
+
+        lines.push(``);
+        lines.push(`*PRODUCTOS SELECCIONADOS:*`);
+
+        AppState.cart.forEach((item) => {
+          const lineSubtotal = item.precio * item.cantidad;
+          lines.push(`• ${item.cantidad}x ${item.nombre} (${formatCurrencyBs(item.precio)} c/u) = ${formatCurrencyBs(lineSubtotal)}`);
+          if (item.nota && item.nota.trim()) {
+            lines.push(`   _Nota: ${item.nota.trim()}_`);
+          }
+        });
+
+        lines.push(``);
+        lines.push(`*RESUMEN DE PAGO:*`);
+        lines.push(`• Subtotal: ${formatCurrencyBs(subtotal)}`);
+
+        if (isDelivery) {
+          const deliveryLabel = deliveryCost > 0
+            ? formatCurrencyBs(deliveryCost)
+            : 'A confirmar por WhatsApp';
+          lines.push(`• Costo de entrega: ${deliveryLabel}`);
+        }
+
+        lines.push(`*• TOTAL A PAGAR: ${formatCurrencyBs(total)}*`);
+
+        if (observaciones && observaciones.trim()) {
+          lines.push(``);
+          lines.push(`*OBSERVACIONES ADICIONALES:*`);
+          lines.push(`${observaciones.trim()}`);
+        }
+
+        lines.push(``);
+        lines.push(`_Nota: Solicitud enviada desde la web. Aguardo confirmación de disponibilidad y tiempo de entrega._`);
+
+        return lines.join('\n');
+      },
+
+      buildWhatsAppUrl(messageText) {
+        const encoded = encodeURIComponent(messageText);
+        return `https://wa.me/${RESTAURANT_CONFIG.whatsappNumber}?text=${encoded}`;
+      }
+    };
+
+    /**
+     * 8. CONTROLADOR DE INTERFAZ DE USUARIO (UI)
+     */
+    const UI = {
+      renderCategories() {
+        const container = document.getElementById('category-filters');
+        if (!container) return;
+
+        container.innerHTML = MENU_CATEGORIES.map((cat) => {
+          const isActive = AppState.activeCategory === cat.id;
+          const activeClasses = isActive
+            ? 'bg-aji-600 text-white shadow-sm border-aji-600'
+            : 'bg-crema-50 text-cacao-800 border-crema-200 hover:bg-crema-100';
+
+          return `
+            <button
+              type="button"
+              role="tab"
+              aria-selected="${isActive}"
+              data-category="${cat.id}"
+              class="category-pill shrink-0 px-4 py-2.5 rounded-xl border text-xs sm:text-sm font-semibold transition-all min-h-[42px] ${activeClasses}"
+            >
+              ${cat.nombre}
+            </button>
+          `;
+        }).join('');
+      },
+
+      renderMenu() {
+        const grid = document.getElementById('menu-grid');
+        const emptyState = document.getElementById('menu-empty-state');
+        const resultsCount = document.getElementById('menu-results-count');
+        if (!grid) return;
+
+        const query = AppState.searchQuery.trim().toLowerCase();
+
+        const filtered = MENU_DATA.filter((item) => {
+          const matchesCategory = AppState.activeCategory === 'todos' || item.categoria === AppState.activeCategory;
+          const matchesSearch =
+            !query ||
+            item.nombre.toLowerCase().includes(query) ||
+            item.descripcion.toLowerCase().includes(query);
+          return matchesCategory && matchesSearch;
+        });
+
+        resultsCount.textContent = `Mostrando ${filtered.length} ${filtered.length === 1 ? 'plato' : 'platos'}`;
+
+        if (filtered.length === 0) {
+          grid.innerHTML = '';
+          emptyState.classList.remove('hidden');
+          return;
+        }
+
+        emptyState.classList.add('hidden');
+
+        grid.innerHTML = filtered.map((item) => {
+          const fallbackImg = `https://placehold.co/600x420/EFE0CA/332017?text=${encodeURIComponent(item.nombre)}`;
+          const statusBadge = item.disponible
+            ? `<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-bold bg-emerald-50 text-emerald-800 border border-emerald-200">
+                 <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>Disponible
+               </span>`
+            : `<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-bold bg-rose-50 text-rose-800 border border-rose-200">
+                 <span class="w-1.5 h-1.5 rounded-full bg-rose-500"></span>Agotado
+               </span>`;
+
+          const actionButton = item.disponible
+            ? `<button
+                 type="button"
+                 data-add-id="${item.id}"
+                 class="btn-add-to-cart w-full inline-flex items-center justify-center gap-2 bg-aji-600 hover:bg-aji-700 text-white font-bold text-sm px-4 py-3.5 rounded-2xl shadow-sm transition-all active:scale-[0.98] min-h-[48px]"
+               >
+                 <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true">
+                   <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+                 </svg>
+                 <span>Agregar al pedido</span>
+               </button>`
+            : `<button
+                 type="button"
+                 disabled
+                 class="w-full inline-flex items-center justify-center gap-2 bg-crema-200 text-cacao-700/60 font-bold text-sm px-4 py-3.5 rounded-2xl cursor-not-allowed min-h-[48px]"
+               >
+                 <span>Producto agotado</span>
+               </button>`;
+
+          return `
+            <article class="group bg-white rounded-3xl border border-crema-200 overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col ${!item.disponible ? 'opacity-80' : ''}">
+              <!-- Fotografía del producto -->
+              <div class="relative aspect-[16/11] bg-crema-100 overflow-hidden">
+                <img
+                  src="${item.imagen}"
+                  onerror="this.onerror=null;this.src='${fallbackImg}';"
+                  alt="${item.nombre}"
+                  loading="lazy"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ${!item.disponible ? 'grayscale-[45%]' : ''}"
+                />
+                <div class="absolute top-3 left-3 flex flex-wrap gap-1.5">
+                  <span class="px-2.5 py-1 rounded-full text-[11px] font-bold bg-cacao-900/85 text-crema-50 backdrop-blur-xs">
+                    ${item.etiqueta}
+                  </span>
+                </div>
+                <div class="absolute top-3 right-3">
+                  ${statusBadge}
+                </div>
+              </div>
+
+              <!-- Detalle del producto -->
+              <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+                <div class="space-y-2">
+                  <div class="flex items-start justify-between gap-3">
+                    <h3 class="font-display font-bold text-lg sm:text-xl text-cacao-900 leading-snug">
+                      ${item.nombre}
+                    </h3>
+                  </div>
+                  <p class="text-xs sm:text-sm text-cacao-700 leading-relaxed">
+                    ${item.descripcion}
+                  </p>
+                </div>
+
+                <div class="pt-3 border-t border-crema-100 space-y-3">
+                  <div class="flex items-baseline justify-between">
+                    <span class="text-[11px] font-medium text-cacao-700/80">Precio referencial</span>
+                    <span class="font-display font-extrabold text-xl text-aji-600">
+                      ${formatCurrencyBs(item.precio)}
+                    </span>
+                  </div>
+                  ${actionButton}
+                </div>
+              </div>
+            </article>
+          `;
+        }).join('');
+      },
+
+      updateCartUI() {
+        const { subtotal, deliveryCost, total, totalItems, isDelivery } = calculateTotals();
+
+        // Actualizar contadores en header y barra móvil
+        document.getElementById('header-cart-count').textContent = totalItems;
+        document.getElementById('header-cart-total').textContent = formatCurrencyBs(total);
+        document.getElementById('mobile-cart-badge').textContent = totalItems;
+        document.getElementById('mobile-cart-total').textContent = formatCurrencyBs(total);
+
+        const itemsContainer = document.getElementById('cart-items-container');
+        const emptyView = document.getElementById('cart-empty-view');
+        const checkoutForm = document.getElementById('checkout-form');
+        const clearBtn = document.getElementById('btn-clear-cart');
+
+        if (AppState.cart.length === 0) {
+          itemsContainer.innerHTML = '';
+          emptyView.classList.remove('hidden');
+          checkoutForm.classList.add('hidden');
+          clearBtn.classList.add('hidden');
+          return;
+        }
+
+        emptyView.classList.add('hidden');
+        checkoutForm.classList.remove('hidden');
+        clearBtn.classList.remove('hidden');
+
+        // Renderizar tarjetas de cada plato en el carrito
+        itemsContainer.innerHTML = AppState.cart.map((item) => {
+          const itemSubtotal = item.precio * item.cantidad;
+          const fallbackImg = `https://placehold.co/160x160/EFE0CA/332017?text=${encodeURIComponent(item.nombre.slice(0, 12))}`;
+
+          return `
+            <div class="bg-white rounded-2xl p-3.5 border border-crema-200 shadow-xs space-y-3">
+              <div class="flex gap-3">
+                <img
+                  src="${item.imagen}"
+                  onerror="this.onerror=null;this.src='${fallbackImg}';"
+                  alt="${item.nombre}"
+                  class="w-16 h-16 rounded-xl object-cover shrink-0 bg-crema-100"
+                />
+                <div class="flex-1 min-w-0">
+                  <div class="flex items-start justify-between gap-2">
+                    <h4 class="font-bold text-sm text-cacao-900 leading-tight truncate">
+                      ${item.nombre}
+                    </h4>
+                    <button
+                      type="button"
+                      data-remove-id="${item.id}"
+                      class="text-cacao-700/60 hover:text-rose-600 p-1 rounded-lg transition-colors shrink-0"
+                      aria-label="Eliminar ${item.nombre}"
+                    >
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                      </svg>
+                    </button>
+                  </div>
+
+                  <p class="text-xs text-cacao-700 mt-0.5">
+                    Unitario: ${formatCurrencyBs(item.precio)}
+                  </p>
+
+                  <div class="flex items-center justify-between mt-2.5">
+                    <!-- Controles de cantidad -->
+                    <div class="inline-flex items-center bg-crema-100 rounded-xl p-1 border border-crema-200">
+                      <button
+                        type="button"
+                        data-qty-dec="${item.id}"
+                        class="w-8 h-8 rounded-lg bg-white text-cacao-900 font-bold hover:bg-crema-200 flex items-center justify-center transition-colors"
+                        aria-label="Disminuir cantidad"
+                      >
+                        −
+                      </button>
+                      <span class="w-9 text-center text-sm font-bold text-cacao-900">
+                        ${item.cantidad}
+                      </span>
+                      <button
+                        type="button"
+                        data-qty-inc="${item.id}"
+                        class="w-8 h-8 rounded-lg bg-white text-cacao-900 font-bold hover:bg-crema-200 flex items-center justify-center transition-colors"
+                        aria-label="Aumentar cantidad"
+                      >
+                        +
+                      </button>
+                    </div>
+
+                    <span class="font-bold text-sm text-aji-600">
+                      ${formatCurrencyBs(itemSubtotal)}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Nota u observación individual por plato -->
+              <div>
+                <input
+                  type="text"
+                  data-note-id="${item.id}"
+                  value="${this.escapeHtml(item.nota || '')}"
+                  placeholder="Observación para este plato (ej. sin picante, bien cocido)..."
+                  class="w-full rounded-xl border border-crema-200 bg-crema-50/60 px-3 py-2 text-xs text-cacao-900 placeholder:text-cacao-700/50 focus:border-aji-600 focus:bg-white focus:outline-none"
+                />
+              </div>
+            </div>
+          `;
+        }).join('');
+
+        // Actualizar totales financieros
+        document.getElementById('summary-subtotal').textContent = formatCurrencyBs(subtotal);
+        document.getElementById('summary-total').textContent = formatCurrencyBs(total);
+
+        const deliveryRow = document.getElementById('summary-delivery-row');
+        const deliveryCostEl = document.getElementById('summary-delivery-cost');
+
+        if (isDelivery) {
+          deliveryRow.classList.remove('hidden');
+          deliveryCostEl.textContent = deliveryCost > 0
+            ? formatCurrencyBs(deliveryCost)
+            : 'A confirmar por WhatsApp';
+        } else {
+          deliveryRow.classList.add('hidden');
+        }
+      },
+
+      syncCustomerForm() {
+        document.getElementById('customer-name').value = AppState.customer.nombre || '';
+        document.getElementById('customer-phone').value = AppState.customer.telefono || '';
+        document.getElementById('customer-address').value = AppState.customer.direccion || '';
+        document.getElementById('customer-notes').value = AppState.customer.observaciones || '';
+        this.updateModalityUI(AppState.customer.modalidad || 'domicilio');
+      },
+
+      updateModalityUI(modality) {
+        AppState.customer.modalidad = modality;
+        StorageService.saveCustomer();
+
+        const buttons = document.querySelectorAll('.modality-btn');
+        buttons.forEach((btn) => {
+          const isSelected = btn.getAttribute('data-modality') === modality;
+          if (isSelected) {
+            btn.className = 'modality-btn flex flex-col items-center justify-center gap-1 p-3 rounded-xl border-2 border-aji-600 bg-aji-600/5 text-aji-700 font-bold text-xs sm:text-sm transition-all min-h-[56px]';
+          } else {
+            btn.className = 'modality-btn flex flex-col items-center justify-center gap-1 p-3 rounded-xl border-2 border-crema-200 bg-white text-cacao-700 font-semibold text-xs sm:text-sm hover:border-crema-300 transition-all min-h-[56px]';
+          }
+        });
+
+        // Mostrar u ocultar dirección de entrega según modalidad
+        const addressWrapper = document.getElementById('delivery-address-wrapper');
+        const addressError = document.getElementById('error-address');
+        if (modality === 'domicilio') {
+          addressWrapper.classList.remove('hidden');
+        } else {
+          addressWrapper.classList.add('hidden');
+          addressError.classList.add('hidden');
+        }
+
+        this.updateCartUI();
+      },
+
+      openCart() {
+        const overlay = document.getElementById('cart-drawer-overlay');
+        overlay.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      },
+
+      closeCart() {
+        const overlay = document.getElementById('cart-drawer-overlay');
+        overlay.classList.add('hidden');
+        document.body.style.overflow = '';
+      },
+
+      openWhatsAppPreview(messageText) {
+        const modal = document.getElementById('wa-preview-modal');
+        const previewBox = document.getElementById('wa-message-preview-box');
+        const sendLink = document.getElementById('btn-send-whatsapp-final');
+
+        previewBox.textContent = messageText;
+        sendLink.href = WhatsAppService.buildWhatsAppUrl(messageText);
+
+        modal.classList.remove('hidden');
+      },
+
+      closeWhatsAppPreview() {
+        const modal = document.getElementById('wa-preview-modal');
+        modal.classList.add('hidden');
+      },
+
+      showToast(message, type = 'success') {
+        const container = document.getElementById('toast-container');
+        if (!container) return;
+
+        const toast = document.createElement('div');
+        const bgClass = type === 'success'
+          ? 'bg-cacao-900 text-white border-cacao-700'
+          : 'bg-white text-cacao-900 border-crema-300';
+
+        toast.className = `toast-enter pointer-events-auto flex items-center gap-2.5 px-4 py-3 rounded-2xl shadow-xl border text-xs sm:text-sm font-semibold ${bgClass}`;
+        toast.innerHTML = `
+          <span class="w-2.5 h-2.5 rounded-full ${type === 'success' ? 'bg-wa-500' : 'bg-maiz-500'} shrink-0"></span>
+          <span>${this.escapeHtml(message)}</span>
+        `;
+
+        container.appendChild(toast);
+
+        setTimeout(() => {
+          toast.style.opacity = '0';
+          toast.style.transform = 'translateY(-6px)';
+          toast.style.transition = 'all 0.2s ease';
+          setTimeout(() => toast.remove(), 220);
+        }, 2400);
+      },
+
+      escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+      }
+    };
+
+    /**
+     * 9. VALIDACIÓN DE FORMULARIO DEL CLIENTE
+     */
+    function validateCheckoutForm() {
+      let isValid = true;
+
+      const nameInput = document.getElementById('customer-name');
+      const phoneInput = document.getElementById('customer-phone');
+      const addressInput = document.getElementById('customer-address');
+
+      const errorName = document.getElementById('error-name');
+      const errorPhone = document.getElementById('error-phone');
+      const errorAddress = document.getElementById('error-address');
+
+      // Validar nombre
+      if (!nameInput.value.trim() || nameInput.value.trim().length < 2) {
+        errorName.classList.remove('hidden');
+        nameInput.classList.add('border-rose-500');
+        isValid = false;
+      } else {
+        errorName.classList.add('hidden');
+        nameInput.classList.remove('border-rose-500');
+      }
+
+      // Validar teléfono (al menos 7 dígitos)
+      const digitsOnly = phoneInput.value.replace(/\D/g, '');
+      if (digitsOnly.length < 7) {
+        errorPhone.classList.remove('hidden');
+        phoneInput.classList.add('border-rose-500');
+        isValid = false;
+      } else {
+        errorPhone.classList.add('hidden');
+        phoneInput.classList.remove('border-rose-500');
+      }
+
+      // Validar dirección SOLO si la modalidad es entrega a domicilio
+      if (AppState.customer.modalidad === 'domicilio') {
+        if (!addressInput.value.trim() || addressInput.value.trim().length < 5) {
+          errorAddress.classList.remove('hidden');
+          addressInput.classList.add('border-rose-500');
+          isValid = false;
+        } else {
+          errorAddress.classList.add('hidden');
+          addressInput.classList.remove('border-rose-500');
+        }
+      } else {
+        errorAddress.classList.add('hidden');
+        addressInput.classList.remove('border-rose-500');
+      }
+
+      return isValid;
+    }
+
+    /**
+     * 10. INICIALIZACIÓN Y MANEJO DE EVENTOS
+     */
+    document.addEventListener('DOMContentLoaded', () => {
+      // Cargar estado guardado de localStorage
+      StorageService.loadState();
+
+      // Renderizado inicial
+      UI.renderCategories();
+      UI.renderMenu();
+      UI.syncCustomerForm();
+      UI.updateCartUI();
+
+      // Eventos de filtro por categoría (delegación)
+      document.getElementById('category-filters').addEventListener('click', (e) => {
+        const btn = e.target.closest('.category-pill');
+        if (!btn) return;
+        AppState.activeCategory = btn.getAttribute('data-category');
+        UI.renderCategories();
+        UI.renderMenu();
+      });
+
+      // Eventos del buscador de platos
+      const searchInput = document.getElementById('search-input');
+      const clearSearchBtn = document.getElementById('btn-clear-search');
+
+      searchInput.addEventListener('input', (e) => {
+        AppState.searchQuery = e.target.value;
+        clearSearchBtn.classList.toggle('hidden', !AppState.searchQuery);
+        UI.renderMenu();
+      });
+
+      clearSearchBtn.addEventListener('click', () => {
+        AppState.searchQuery = '';
+        searchInput.value = '';
+        clearSearchBtn.classList.add('hidden');
+        UI.renderMenu();
+      });
+
+      document.getElementById('btn-reset-filters').addEventListener('click', () => {
+        AppState.activeCategory = 'todos';
+        AppState.searchQuery = '';
+        searchInput.value = '';
+        clearSearchBtn.classList.add('hidden');
+        UI.renderCategories();
+        UI.renderMenu();
+      });
+
+      // Evento agregar producto al carrito desde el catálogo
+      document.getElementById('menu-grid').addEventListener('click', (e) => {
+        const addBtn = e.target.closest('.btn-add-to-cart');
+        if (!addBtn) return;
+        const productId = addBtn.getAttribute('data-add-id');
+        CartService.addItem(productId);
+      });
+
+      // Abrir y cerrar drawer del carrito
+      document.getElementById('btn-open-cart-header').addEventListener('click', () => UI.openCart());
+      document.getElementById('btn-open-cart-mobile').addEventListener('click', () => UI.openCart());
+      document.getElementById('btn-close-cart').addEventListener('click', () => UI.closeCart());
+      document.getElementById('cart-backdrop').addEventListener('click', () => UI.closeCart());
+      document.getElementById('btn-empty-browse').addEventListener('click', () => {
+        UI.closeCart();
+        document.getElementById('menu').scrollIntoView({ behavior: 'smooth' });
+      });
+
+      // Vaciar carrito
+      document.getElementById('btn-clear-cart').addEventListener('click', () => {
+        CartService.clearCart();
+      });
+
+      // Acciones dentro de los ítems del carrito (+, -, eliminar, nota individual)
+      const cartItemsContainer = document.getElementById('cart-items-container');
+      cartItemsContainer.addEventListener('click', (e) => {
+        const decBtn = e.target.closest('[data-qty-dec]');
+        if (decBtn) {
+          CartService.updateQuantity(decBtn.getAttribute('data-qty-dec'), -1);
+          return;
+        }
+        const incBtn = e.target.closest('[data-qty-inc]');
+        if (incBtn) {
+          CartService.updateQuantity(incBtn.getAttribute('data-qty-inc'), 1);
+          return;
+        }
+        const remBtn = e.target.closest('[data-remove-id]');
+        if (remBtn) {
+          CartService.removeItem(remBtn.getAttribute('data-remove-id'));
+        }
+      });
+
+      cartItemsContainer.addEventListener('input', (e) => {
+        const noteInput = e.target.closest('[data-note-id]');
+        if (noteInput) {
+          CartService.updateItemNote(noteInput.getAttribute('data-note-id'), noteInput.value);
+        }
+      });
+
+      // Selección de modalidad: Entrega a domicilio vs Recojo en el local
+      document.querySelectorAll('.modality-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const modality = btn.getAttribute('data-modality');
+          UI.updateModalityUI(modality);
+        });
+      });
+
+      // Guardar automáticamente cambios en los campos del cliente
+      ['customer-name', 'customer-phone', 'customer-address', 'customer-notes'].forEach((id) => {
+        const el = document.getElementById(id);
+        el.addEventListener('input', () => {
+          AppState.customer.nombre = document.getElementById('customer-name').value;
+          AppState.customer.telefono = document.getElementById('customer-phone').value;
+          AppState.customer.direccion = document.getElementById('customer-address').value;
+          AppState.customer.observaciones = document.getElementById('customer-notes').value;
+          StorageService.saveCustomer();
+        });
+      });
+
+      // Envío del formulario -> Validar y mostrar modal de revisión del mensaje de WhatsApp
+      document.getElementById('checkout-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (AppState.cart.length === 0) return;
+
+        if (!validateCheckoutForm()) {
+          UI.showToast('Por favor completa los campos obligatorios marcados.', 'neutral');
+          return;
+        }
+
+        const formattedMessage = WhatsAppService.buildOrderMessage();
+        UI.openWhatsAppPreview(formattedMessage);
+      });
+
+      // Controles del Modal de Vista Previa de WhatsApp
+      document.getElementById('btn-close-wa-modal').addEventListener('click', () => UI.closeWhatsAppPreview());
+      document.getElementById('wa-modal-backdrop').addEventListener('click', () => UI.closeWhatsAppPreview());
+      document.getElementById('btn-edit-order').addEventListener('click', () => UI.closeWhatsAppPreview());
+
+      // Copiar mensaje al portapapeles de forma compatible con iframes y navegadores
+      document.getElementById('btn-copy-wa-message').addEventListener('click', () => {
+        const text = document.getElementById('wa-message-preview-box').textContent;
+        const tempTextarea = document.createElement('textarea');
+        tempTextarea.value = text;
+        tempTextarea.style.position = 'fixed';
+        tempTextarea.style.opacity = '0';
+        document.body.appendChild(tempTextarea);
+        tempTextarea.select();
+        try {
+          document.execCommand('copy');
+          UI.showToast('Mensaje copiado al portapapeles');
+        } catch (err) {
+          UI.showToast('No se pudo copiar automáticamente', 'neutral');
+        }
+        document.body.removeChild(tempTextarea);
+      });
+
+      // Cerrar modales con tecla Escape
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          UI.closeWhatsAppPreview();
+          UI.closeCart();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
