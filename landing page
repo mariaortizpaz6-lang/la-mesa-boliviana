@@ -3,31 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>La mesa boliviana | Gastronomía y Platos Típicos Bolivianos en Santa Cruz</title>
-  <meta name="description" content="Descubre la auténtica tradición culinaria con La mesa boliviana. Especialistas en platos típicos bolivianos preparados con recetas tradicionales en Santa Cruz, Bolivia.">
-
+  <title>La mesa boliviana | Auténticos Platos Típicos Bolivianos en Santa Cruz</title>
+  <meta name="description" content="Disfruta del verdadero sabor tradicional en La mesa boliviana. Platos típicos bolivianos preparados al momento en Santa Cruz, Bolivia. ¡Haz tu pedido por WhatsApp!">
+  
   <!-- SEO JSON-LD ESTRUCTURADO -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "ProfilePage",
-    "mainEntity": {
-      "@type": "Person",
-      "name": "La mesa boliviana",
-      "jobTitle": "Especialista en Gastronomía Tradicional Boliviana",
-      "description": "Preparación artesanal y experiencia culinaria de platos típicos bolivianos en Santa Cruz, Bolivia.",
-      "telephone": "+59162016619",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Santa Cruz",
-        "addressCountry": "Bolivia"
-      }
+    "@type": "Restaurant",
+    "name": "La mesa boliviana",
+    "description": "Restaurante especializado en auténticos platos típicos bolivianos preparados con recetas tradicionales e ingredientes frescos.",
+    "servesCuisine": "Boliviana",
+    "telephone": "+59162016619",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Santa Cruz de la Sierra",
+      "addressCountry": "BO"
     }
   }
   </script>
 
   <style>
-    /* 1. RESET Y VARIABLES GLOBALES (SECTOR GASTRONOMÍA) */
+    /* 1. RESET Y VARIABLES GLOBALES (TOKENS CSS - SECTOR GASTRONOMÍA) */
     *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
@@ -35,29 +32,35 @@
     }
 
     :root {
-      --primary: #b45309;
+      /* Tríada cromática Gastronomía con contraste WCAG AA (>= 4.5:1) */
+      --primary: #b45309;        /* Ámbar Tostado */
       --primary-dark: #92400e;
-      --accent: #ea580c;
-      --bg: #fefce8;
+      --accent: #ea580c;         /* Naranja Fuego */
+      --accent-dark: #c2410c;
+      --bg: #fefce8;             /* Crema Cálido Suave */
       --surface: #ffffff;
       --surface-alt: #fef3c7;
-      --text: #1c1917;
+      --text: #1c1917;           /* Carbón Cálido */
       --text-muted: #57534e;
       --border: #fde68a;
+      --whatsapp: #15803d;       /* Verde alto contraste WCAG AA */
+      --whatsapp-hover: #166534;
 
-      /* Escala tipográfica y espaciado fluido (clamp) */
-      --font-h1: clamp(1.85rem, 1.6vw + 1.4rem, 3.25rem);
-      --font-h2: clamp(1.5rem, 1.1vw + 1.2rem, 2.25rem);
+      /* Tipografía y Espaciado Fluido (Matemática clamp) */
+      --font-h1: clamp(2rem, 2.2vw + 1.4rem, 3.5rem);
+      --font-h2: clamp(1.5rem, 1.3vw + 1.15rem, 2.4rem);
       --font-h3: clamp(1.15rem, 0.5vw + 1rem, 1.4rem);
       --font-body: clamp(1rem, 0.25vw + 0.95rem, 1.125rem);
-      --space-section: clamp(2.5rem, 4.5vw + 1.5rem, 5.5rem);
-      --gutter: clamp(1rem, 2vw + 0.5rem, 2rem);
+      --space-section: clamp(3rem, 5vw + 1.5rem, 6rem);
+      --gutter: clamp(1rem, 2.5vw + 0.5rem, 2rem);
 
-      /* Elevaciones y transiciones */
+      /* Elevaciones y Microinteracciones */
       --shadow-sm: 0 2px 4px rgba(28, 25, 23, 0.06);
       --shadow-md: 0 6px 12px -2px rgba(28, 25, 23, 0.08);
       --shadow-lg: 0 14px 24px -4px rgba(180, 83, 9, 0.14);
-      --transition: 220ms cubic-bezier(0.4, 0, 0.2, 1);
+      --radius-md: 0.75rem;
+      --radius-lg: 1.25rem;
+      --transition: 200ms cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     html {
@@ -67,16 +70,16 @@
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       font-size: var(--font-body);
-      line-height: 1.65;
+      line-height: 1.6;
       color: var(--text);
       background-color: var(--bg);
       text-rendering: optimizeLegibility;
       -webkit-font-smoothing: antialiased;
     }
 
-    /* 2. TIPOGRAFÍA Y ELEMENTOS BASE */
+    /* 2. TIPOGRAFÍA Y JERARQUÍA */
     h1, h2, h3 {
-      line-height: 1.2;
+      line-height: 1.18;
       font-weight: 800;
       color: var(--text);
       letter-spacing: -0.02em;
@@ -95,21 +98,46 @@
       padding-block: var(--space-section);
     }
 
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      background-color: var(--surface-alt);
-      color: var(--primary-dark);
-      font-weight: 700;
-      font-size: 0.875rem;
-      padding: 0.35rem 0.85rem;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      margin-block-end: 1rem;
+    /* 3. BARRA DE NAVEGACIÓN */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(254, 252, 232, 0.94);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      padding-block: 0.85rem;
     }
 
-    /* 3. BOTONES ACCESIBLES (WCAG AA >= 44x44px) */
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 800;
+      font-size: 1.2rem;
+    }
+
+    .brand-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: var(--primary);
+      color: #ffffff;
+      border-radius: 0.6rem;
+    }
+
+    /* 4. BOTONES Y OBJETIVOS TÁCTILES ACCESIBLES (>= 44x44px) */
     .btn {
       display: inline-flex;
       align-items: center;
@@ -117,8 +145,8 @@
       gap: 0.6rem;
       min-height: 48px;
       min-width: 48px;
-      padding: 0.85rem 1.75rem;
-      border-radius: 0.65rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius-md);
       font-weight: 700;
       font-size: 1rem;
       text-decoration: none;
@@ -127,21 +155,31 @@
       transition: transform var(--transition), background-color var(--transition), box-shadow var(--transition);
     }
 
-    .btn:focus-visible,
-    button:focus-visible,
-    a:focus-visible {
+    .btn:focus-visible, summary:focus-visible, input:focus-visible, select:focus-visible {
       outline: 3px solid var(--accent);
       outline-offset: 3px;
     }
 
     .btn-primary {
-      background-color: var(--primary);
+      background-color: var(--accent);
       color: #ffffff;
       box-shadow: var(--shadow-md);
     }
 
     .btn-primary:hover {
-      background-color: var(--primary-dark);
+      background-color: var(--accent-dark);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .btn-whatsapp {
+      background-color: var(--whatsapp);
+      color: #ffffff;
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-whatsapp:hover {
+      background-color: var(--whatsapp-hover);
       transform: translateY(-2px);
       box-shadow: var(--shadow-lg);
     }
@@ -154,712 +192,644 @@
 
     .btn-outline:hover {
       background-color: var(--surface-alt);
-      transform: translateY(-2px);
     }
 
-    /* 4. NAVEGACIÓN SUPERIOR */
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background-color: rgba(254, 252, 232, 0.94);
-      backdrop-filter: blur(8px);
-      border-block-end: 1px solid var(--border);
-    }
-
-    .nav-wrapper {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      min-height: 72px;
-      gap: 1rem;
-    }
-
-    .brand-logo {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      font-weight: 800;
-      font-size: 1.25rem;
-      color: var(--text);
-      text-decoration: none;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: var(--text);
-      text-decoration: none;
-      font-weight: 600;
-      padding: 0.5rem 0.25rem;
-      transition: color var(--transition);
-    }
-
-    .nav-links a:hover {
-      color: var(--primary);
-    }
-
-    .menu-toggle {
-      display: none;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 0.5rem;
-      min-width: 48px;
-      min-height: 48px;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      color: var(--text);
-    }
-
-    @media (max-width: 768px) {
-      .menu-toggle {
-        display: inline-flex;
-      }
-      .nav-links {
-        display: none;
-        position: absolute;
-        top: 72px;
-        inset-inline: 0;
-        background: var(--surface);
-        flex-direction: column;
-        padding: 1.5rem;
-        border-block-end: 2px solid var(--border);
-        box-shadow: var(--shadow-lg);
-      }
-      .nav-links.open {
-        display: flex;
-      }
-    }
-
-    /* 5. HERO DE AUTORIDAD (LCP OPTIMIZADO) */
+    /* 5. HERO SECTION (REGLA DE LOS 3 SEGUNDOS Y LCP OPTIMIZADO) */
     .hero {
-      padding-block: clamp(2.5rem, 5vw, 5rem);
+      padding-block: clamp(2.5rem, 5vw + 1rem, 5rem);
+      background: radial-gradient(circle at top right, #fde68a 0%, transparent 55%);
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr));
       align-items: center;
       gap: clamp(2rem, 4vw, 3.5rem);
     }
 
-    .hero-copy p {
+    .badge-trust {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background-color: var(--surface-alt);
+      color: var(--primary-dark);
+      border: 1px solid var(--border);
+      padding: 0.4rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.875rem;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-title {
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-title span {
+      color: var(--primary);
+    }
+
+    .hero-subtitle {
       color: var(--text-muted);
-      margin-block: 1.25rem 2rem;
-      max-width: 56ch;
+      font-size: clamp(1.05rem, 0.5vw + 0.95rem, 1.25rem);
+      margin-bottom: 2rem;
+      max-width: 54ch;
     }
 
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-microproof {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.925rem;
+      color: var(--text-muted);
+    }
+
+    .stars {
+      color: #d97706;
+      letter-spacing: 1px;
+      font-weight: 800;
     }
 
     .hero-visual {
-      background: linear-gradient(145deg, var(--surface) 0%, var(--surface-alt) 100%);
+      background: var(--surface);
       border: 2px solid var(--border);
-      border-radius: 1.5rem;
-      padding: clamp(1.5rem, 3vw, 2.5rem);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
       box-shadow: var(--shadow-lg);
+      aspect-ratio: 4 / 3;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      text-align: center;
-      aspect-ratio: 4 / 3;
       justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
     }
 
-    /* 6. MANIFIESTO Y TRAYECTORIA (3 HITOS) */
-    .manifesto-section {
+    /* 6. BARRA DE VALIDACIÓN SOCIAL / GARANTÍAS */
+    .trust-bar {
       background-color: var(--surface);
       border-block: 1px solid var(--border);
+      padding-block: 1.5rem;
     }
 
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+      gap: 1.25rem;
+      text-align: center;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      font-weight: 700;
+      color: var(--text);
+      font-size: 0.95rem;
+    }
+
+    .trust-item svg {
+      color: var(--primary);
+      flex-shrink: 0;
+    }
+
+    /* 7. MATRIZ DE BENEFICIOS / ESPECIALIDADES (CONTAINER QUERIES) */
     .section-header {
       text-align: center;
-      max-width: 680px;
+      max-width: 65ch;
       margin-inline: auto;
-      margin-block-end: clamp(2rem, 3.5vw, 3rem);
+      margin-bottom: clamp(2rem, 4vw, 3.25rem);
     }
 
     .section-header p {
       color: var(--text-muted);
-      margin-block-start: 0.75rem;
+      margin-top: 0.75rem;
     }
 
-    .milestones-grid {
+    .grid-cards {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr));
       gap: var(--gutter);
     }
 
-    .milestone-card {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 1rem;
-      padding: 1.75rem;
-      box-shadow: var(--shadow-sm);
+    .card-container {
+      container-type: inline-size;
+      container-name: feature-card;
     }
 
-    .milestone-icon {
-      width: 48px;
-      height: 48px;
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1.75rem;
+      height: 100%;
+      box-shadow: var(--shadow-sm);
+      transition: transform var(--transition), box-shadow var(--transition);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .card-icon {
+      width: 52px;
+      height: 52px;
       border-radius: 0.75rem;
       background-color: var(--surface-alt);
       color: var(--primary);
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      margin-block-end: 1rem;
+      flex-shrink: 0;
     }
 
-    .milestone-card p {
+    .card p {
       color: var(--text-muted);
-      margin-block-start: 0.5rem;
+      font-size: 0.98rem;
     }
 
-    /* 7. PORTAFOLIO DE ESPECIALIDADES CON FILTROS Y CONTAINER QUERIES */
-    .filter-bar {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0.75rem;
-      margin-block-end: 2.25rem;
-    }
-
-    .filter-btn {
-      min-height: 44px;
-      padding: 0.5rem 1.25rem;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background-color: var(--surface);
-      color: var(--text);
-      font-weight: 600;
-      cursor: pointer;
-      transition: background-color var(--transition), color var(--transition);
-    }
-
-    .filter-btn:hover,
-    .filter-btn.active {
-      background-color: var(--primary);
-      color: #ffffff;
-      border-color: var(--primary);
-    }
-
-    .portfolio-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
-      gap: var(--gutter);
-    }
-
-    .dish-card-wrapper {
-      container-type: inline-size;
-      container-name: dish-card;
-    }
-
-    .dish-card-wrapper[hidden] {
-      display: none;
-    }
-
-    .dish-card {
-      background-color: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 1rem;
-      padding: 1.5rem;
-      height: 100%;
-      box-shadow: var(--shadow-sm);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 1.25rem;
-      transition: transform var(--transition), box-shadow var(--transition);
-    }
-
-    .dish-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-lg);
-    }
-
-    @container dish-card (min-width: 420px) {
-      .dish-card-top {
-        display: grid;
-        grid-template-columns: 72px 1fr;
-        gap: 1rem;
-        align-items: start;
+    @container feature-card (min-width: 420px) {
+      .card {
+        flex-direction: row;
+        align-items: flex-start;
       }
     }
 
-    .dish-tag {
-      font-size: 0.8rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      color: var(--primary);
-      margin-block-end: 0.35rem;
-      display: block;
-    }
-
-    .dish-desc {
-      color: var(--text-muted);
-      margin-block-start: 0.5rem;
-      font-size: 0.975rem;
-    }
-
-    /* 8. CARRUSEL NATIVO DE EXPERIENCIAS (CSS SCROLL SNAP) */
-    .testimonials-section {
+    /* 8. ACORDEÓN FAQ ACCESIBLE */
+    .faq-section {
       background-color: var(--surface);
-      border-block: 1px solid var(--border);
+      border-top: 1px solid var(--border);
     }
 
-    .snap-carousel {
-      display: grid;
-      grid-auto-flow: column;
-      grid-auto-columns: min(88%, 380px);
-      gap: var(--gutter);
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      padding-block-end: 1rem;
-      scrollbar-width: thin;
-      scrollbar-color: var(--primary) var(--surface-alt);
-    }
-
-    .snap-item {
-      scroll-snap-align: start;
-      background-color: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 1rem;
-      padding: 1.75rem;
+    .faq-list {
+      max-width: 800px;
+      margin-inline: auto;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
       gap: 1rem;
     }
 
-    .stars {
-      color: var(--primary);
-      font-weight: 700;
-      letter-spacing: 2px;
+    .faq-item {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      background-color: var(--bg);
+      overflow: hidden;
     }
 
-    .author-meta {
+    .faq-btn {
+      width: 100%;
+      min-height: 56px;
+      padding: 1.1rem 1.5rem;
+      background: transparent;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      text-align: left;
+      font-family: inherit;
+      font-size: 1.05rem;
       font-weight: 700;
       color: var(--text);
-      font-size: 0.95rem;
+      cursor: pointer;
     }
 
-    /* 9. SECCIÓN DE AGENDAMIENTO / CONSULTA DIRECTA */
+    .faq-btn:hover {
+      background-color: var(--surface-alt);
+    }
+
+    .faq-icon {
+      transition: transform var(--transition);
+      color: var(--primary);
+      flex-shrink: 0;
+    }
+
+    .faq-btn[aria-expanded="true"] .faq-icon {
+      transform: rotate(180deg);
+    }
+
+    .faq-panel {
+      padding: 0 1.5rem 1.25rem 1.5rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+      padding-top: 1rem;
+    }
+
+    .faq-panel[hidden] {
+      display: none;
+    }
+
+    /* 9. CAJA DE CONVERSIÓN DIRECTA A WHATSAPP */
     .cta-box {
       background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
       color: #ffffff;
-      border-radius: 1.5rem;
-      padding: clamp(2rem, 5vw, 3.75rem);
-      text-align: center;
+      border-radius: var(--radius-lg);
+      padding: clamp(2rem, 4vw, 3.5rem);
       box-shadow: var(--shadow-lg);
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+      gap: 2.5rem;
+      align-items: center;
     }
 
     .cta-box h2 {
       color: #ffffff;
-      margin-block-end: 1rem;
+      margin-bottom: 1rem;
     }
 
     .cta-box p {
       color: #fef3c7;
-      max-width: 58ch;
-      margin-inline: auto;
-      margin-block-end: 2rem;
+      margin-bottom: 1.5rem;
     }
 
-    .btn-whatsapp-hero {
+    .order-form {
+      background: var(--surface);
+      color: var(--text);
+      padding: 1.75rem;
+      border-radius: var(--radius-md);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .form-group label {
+      font-weight: 700;
+      font-size: 0.925rem;
+    }
+
+    .form-control {
+      min-height: 46px;
+      padding: 0.65rem 0.9rem;
+      border: 1px solid #cbd5e1;
+      border-radius: 0.5rem;
+      font-family: inherit;
+      font-size: 1rem;
+      color: var(--text);
       background-color: #ffffff;
-      color: var(--primary-dark);
     }
 
-    .btn-whatsapp-hero:hover {
-      background-color: var(--bg);
-      transform: translateY(-2px);
-    }
-
-    /* 10. FOOTER */
-    .site-footer {
+    /* 10. FOOTER MINIMALISTA */
+    footer {
+      background-color: var(--text);
+      color: #e7e5e4;
       padding-block: 2.5rem;
       text-align: center;
-      color: var(--text-muted);
       font-size: 0.925rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .footer-location {
+      color: #fde68a;
+      font-weight: 600;
     }
   </style>
 </head>
 <body>
 
-  <!-- ENCABEZADO Y NAVEGACIÓN -->
-  <header class="site-header">
-    <div class="container nav-wrapper">
-      <a href="#inicio" class="brand-logo" aria-label="Inicio - La mesa boliviana">
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-          <circle cx="16" cy="16" r="15" fill="#b45309"/>
-          <path d="M8 18C8 22.4183 11.5817 25 16 25C20.4183 25 24 22.4183 24 18H8Z" fill="#fefce8"/>
-          <path d="M12 11C12 9.5 13 8.5 13 7M16 11C16 9.5 17 8.5 17 7M20 11C20 9.5 21 8.5 21 7" stroke="#fde68a" stroke-width="2" stroke-linecap="round"/>
-        </svg>
+  <!-- NAVEGACIÓN SUPERIOR -->
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="#" class="brand" aria-label="Inicio La mesa boliviana">
+        <span class="brand-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 14h18"/>
+            <path d="M5 14a7 7 0 0 0 14 0"/>
+            <path d="M8 19h8"/>
+            <path d="M9 6c0-1.5 1-2 1-3.5"/>
+            <path d="M12 6c0-1.5 1-2 1-3.5"/>
+            <path d="M15 6c0-1.5 1-2 1-3.5"/>
+          </svg>
+        </span>
         <span>La mesa boliviana</span>
       </a>
-
-      <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="primaryNav" aria-label="Abrir menú de navegación">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
-          <line x1="3" y1="6" x2="21" y2="6"></line>
-          <line x1="3" y1="12" x2="21" y2="12"></line>
-          <line x1="3" y1="18" x2="21" y2="18"></line>
-        </svg>
-      </button>
-
-      <nav aria-label="Navegación principal">
-        <ul class="nav-links" id="primaryNav">
-          <li><a href="#esencia">Mi Esencia</a></li>
-          <li><a href="#especialidades">Platos Típicos</a></li>
-          <li><a href="#experiencias">Reseñas</a></li>
-          <li><a href="#contacto" class="btn btn-primary" style="min-height: 44px; padding: 0.5rem 1.1rem;">Consultar por WhatsApp</a></li>
-        </ul>
-      </nav>
+      <a href="#pedir-ahora" class="btn btn-primary">Pedir Ahora</a>
     </div>
   </header>
 
-  <main id="inicio">
-    <!-- SECCIÓN 1: HERO DE AUTORIDAD -->
+  <main>
+    <!-- HERO SECTION -->
     <section class="hero">
       <div class="container hero-grid">
-        <div class="hero-copy">
-          <span class="badge">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/>
+        <div>
+          <div class="badge-trust">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+              <circle cx="12" cy="10" r="3"/>
             </svg>
-            Santa Cruz, Bolivia
-          </span>
-          <h1>El auténtico sabor de los platos típicos bolivianos en tu mesa</h1>
-          <p>En <strong>La mesa boliviana</strong> rescatamos las recetas tradicionales de nuestra tierra con ingredientes seleccionados y sazón casera inconfundible, listos para tus comidas familiares, reuniones o eventos especiales en Santa Cruz.</p>
+            <span>Sabor Tradicional en Santa Cruz, Bolivia</span>
+          </div>
+          <h1 class="hero-title">
+            El auténtico sabor de los <span>platos típicos bolivianos</span> directo a tu mesa
+          </h1>
+          <p class="hero-subtitle">
+            Cocina tradicional hecha con recetas de casa, ingredientes frescos del día y porciones generosas. Olvídate de cocinar hoy y disfruta de nuestra gastronomía típica con atención rápida por WhatsApp.
+          </p>
           <div class="hero-actions">
-            <a href="https://wa.me/59162016619?text=Hola%20La%20mesa%20boliviana%2C%20quisiera%20consultar%20sobre%20sus%20platos%20t%C3%ADpicos%20bolivianos%20disponibles." target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+            <a href="#pedir-ahora" class="btn btn-whatsapp">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
               </svg>
-              Consultar Menú del Día
+              Consultar Menú por WhatsApp
             </a>
-            <a href="#especialidades" class="btn btn-outline">Explorar Platos Típicos</a>
+            <a href="#beneficios" class="btn btn-outline">Conocer Nuestra Cocina</a>
+          </div>
+          <div class="hero-microproof">
+            <span class="stars" aria-label="Calificación de 5 estrellas">★★★★★</span>
+            <span>Preparación fresca al momento • Atención directa sin intermediarios</span>
           </div>
         </div>
 
-        <!-- Ilustración Vectorial Hero con dimensiones explícitas para CLS = 0 -->
-        <div class="hero-visual" role="img" aria-label="Ilustración artesanal de gastronomía tradicional boliviana">
-          <svg width="240" height="180" viewBox="0 0 240 180" fill="none">
-            <ellipse cx="120" cy="142" rx="92" ry="18" fill="#fde68a"/>
-            <path d="M44 102C44 134 78 146 120 146C162 146 196 134 196 102H44Z" fill="#b45309"/>
-            <path d="M40 98H200C200 103 195 106 190 106H50C45 106 40 103 40 98Z" fill="#92400e"/>
-            <circle cx="96" cy="86" r="16" fill="#ea580c"/>
-            <circle cx="136" cy="84" r="18" fill="#d97706"/>
-            <circle cx="116" cy="76" r="14" fill="#15803d"/>
-            <path d="M88 50C88 40 96 36 96 26" stroke="#b45309" stroke-width="3.5" stroke-linecap="round"/>
-            <path d="M120 46C120 36 128 32 128 22" stroke="#ea580c" stroke-width="3.5" stroke-linecap="round"/>
-            <path d="M150 50C150 40 158 36 158 26" stroke="#b45309" stroke-width="3.5" stroke-linecap="round"/>
+        <!-- ILUSTRACIÓN VECTORIAL HERO (LCP EAGER SIN DEPENDENCIAS) -->
+        <div class="hero-visual">
+          <svg width="420" height="315" viewBox="0 0 420 315" role="img" aria-label="Ilustración de plato típico boliviano caliente y tradicional en La mesa boliviana" fetchpriority="high" style="width: 100%; height: auto;">
+            <defs>
+              <linearGradient id="plateGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#ffffff"/>
+                <stop offset="100%" stop-color="#f5f5f4"/>
+              </linearGradient>
+              <linearGradient id="stewGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#ea580c"/>
+                <stop offset="100%" stop-color="#9a3412"/>
+              </linearGradient>
+            </defs>
+            <!-- Mantel / Base decorativa -->
+            <rect x="20" y="20" width="380" height="275" rx="20" fill="#fef3c7" stroke="#fde68a" stroke-width="2"/>
+            <!-- Franjas inspiradas en aguayo boliviano -->
+            <rect x="20" y="255" width="380" height="8" fill="#dc2626"/>
+            <rect x="20" y="263" width="380" height="8" fill="#eab308"/>
+            <rect x="20" y="271" width="380" height="8" fill="#15803d"/>
+            <!-- Sombra del plato -->
+            <ellipse cx="210" cy="182" rx="135" ry="62" fill="rgba(28, 25, 23, 0.12)"/>
+            <!-- Plato de cerámica -->
+            <ellipse cx="210" cy="174" rx="135" ry="60" fill="url(#plateGrad)" stroke="#d6d3d1" stroke-width="3"/>
+            <ellipse cx="210" cy="174" rx="105" ry="44" fill="#fafaf9" stroke="#e7e5e4" stroke-width="2"/>
+            <!-- Guiso / Sabor típico -->
+            <ellipse cx="210" cy="174" rx="88" ry="34" fill="url(#stewGrad)"/>
+            <!-- Guarniciones tradicionales -->
+            <circle cx="175" cy="166" r="16" fill="#facc15"/>
+            <circle cx="242" cy="168" r="15" fill="#fde047"/>
+            <ellipse cx="208" cy="176" rx="28" ry="14" fill="#7c2d12"/>
+            <!-- Hierbas frescas (perejil/quilquiña) -->
+            <circle cx="198" cy="168" r="5" fill="#16a34a"/>
+            <circle cx="218" cy="172" r="4" fill="#15803d"/>
+            <circle cx="206" cy="180" r="5" fill="#22c55e"/>
+            <!-- Vapor aromático -->
+            <path d="M175 112 Q165 92 178 72" fill="none" stroke="#b45309" stroke-width="4" stroke-linecap="round" opacity="0.7"/>
+            <path d="M210 104 Q200 80 214 58" fill="none" stroke="#ea580c" stroke-width="4" stroke-linecap="round" opacity="0.85"/>
+            <path d="M245 112 Q235 92 248 72" fill="none" stroke="#b45309" stroke-width="4" stroke-linecap="round" opacity="0.7"/>
+            <!-- Etiqueta superior -->
+            <rect x="115" y="28" width="190" height="30" rx="15" fill="#b45309"/>
+            <text x="210" y="48" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="13" font-weight="bold">100% RECETA TRADICIONAL</text>
           </svg>
-          <p style="font-weight: 700; color: var(--primary-dark); margin-block-start: 0.75rem;">Tradición Culinaria Boliviana</p>
-          <p style="font-size: 0.9rem; color: var(--text-muted);">Preparación artesanal bajo pedido en Santa Cruz</p>
         </div>
       </div>
     </section>
 
-    <!-- SECCIÓN 2: MANIFIESTO Y METODOLOGÍA -->
-    <section id="esencia" class="manifesto-section">
+    <!-- BARRA DE VALIDACIÓN SOCIAL -->
+    <div class="trust-bar" aria-label="Garantías de calidad">
+      <div class="container trust-grid">
+        <div class="trust-item">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+          <span>Ingredientes Frescos del Día</span>
+        </div>
+        <div class="trust-item">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12 6 12 12 16 14"/>
+          </svg>
+          <span>Atención Rápida en Santa Cruz</span>
+        </div>
+        <div class="trust-item">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+          <span>Sazón Casera Auténtica</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- MATRIZ DE BENEFICIOS -->
+    <section id="beneficios">
       <div class="container">
         <div class="section-header">
-          <span class="badge">Nuestra Filosofía Culinaria</span>
-          <h2>Cocina con identidad, respeto por la receta y sazón casera</h2>
-          <p>Cada plato típico boliviano cuenta una historia de nuestra cultura. Trabajamos con dedicación artesanal para mantener intactos los sabores que nos unen.</p>
+          <h2>¿Por qué elegir La mesa boliviana?</h2>
+          <p>Rescatamos el valor de la gastronomía tradicional de Bolivia para que disfrutes un almuerzo o plato especial como hecho en casa.</p>
         </div>
 
-        <div class="milestones-grid">
-          <article class="milestone-card">
-            <div class="milestone-icon" aria-hidden="true">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
-              </svg>
-            </div>
-            <h3>1. Recetas Auténticas</h3>
-            <p>Respetamos los tiempos de cocción lenta, los condimentos tradicionales y las técnicas heredadas de la gastronomía boliviana.</p>
-          </article>
+        <div class="grid-cards">
+          <div class="card-container">
+            <article class="card">
+              <div class="card-icon" aria-hidden="true">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+                </svg>
+              </div>
+              <div>
+                <h3>Recetas Tradicionales Genuinas</h3>
+                <p>Respetamos los tiempos de cocción, condimentos naturales y secretos culinarios de los platos típicos más queridos de Bolivia.</p>
+              </div>
+            </article>
+          </div>
 
-          <article class="milestone-card">
-            <div class="milestone-icon" aria-hidden="true">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-              </svg>
-            </div>
-            <h3>2. Ingredientes Frescos</h3>
-            <p>Seleccionamos productos frescos del día en Santa Cruz para garantizar textura, aroma y calidad superior en cada porción.</p>
-          </article>
+          <div class="card-container">
+            <article class="card">
+              <div class="card-icon" aria-hidden="true">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                  <line x1="3" y1="6" x2="21" y2="6"/>
+                  <path d="M16 10a4 4 0 0 1-8 0"/>
+                </svg>
+              </div>
+              <div>
+                <h3>Porciones Generosas y Bien Servidas</h3>
+                <p>Cada plato está pensado para dejarte plenamente satisfecho, con guarniciones completas y presentación cuidadosa para llevar.</p>
+              </div>
+            </article>
+          </div>
 
-          <article class="milestone-card">
-            <div class="milestone-icon" aria-hidden="true">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-                <circle cx="12" cy="12" r="10"/>
-                <polyline points="12 6 12 12 16 14"/>
-              </svg>
-            </div>
-            <h3>3. Atención Personalizada</h3>
-            <p>Coordinamos directamente contigo por WhatsApp para preparar porciones individuales, almuerzos familiares o pedidos especiales.</p>
-          </article>
+          <div class="card-container">
+            <article class="card">
+              <div class="card-icon" aria-hidden="true">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+              </div>
+              <div>
+                <h3>Pedido Directo sin Comisiones</h3>
+                <p>Coordina tu menú del día, disponibilidad y entrega directamente por WhatsApp sin recargos ocultos de aplicaciones externas.</p>
+              </div>
+            </article>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- SECCIÓN 3: PORTAFOLIO DE PLATOS TÍPICOS CON FILTROS -->
-    <section id="especialidades">
+    <!-- PREGUNTAS FRECUENTES (ACORDEÓN ACCESIBLE) -->
+    <section class="faq-section" id="preguntas">
       <div class="container">
         <div class="section-header">
-          <span class="badge">Especialidades de la Casa</span>
-          <h2>Nuestros Platos Típicos Bolivianos</h2>
-          <p>Filtra por estilo gastronómico y consulta disponibilidad o cotización directa por WhatsApp.</p>
+          <h2>Preguntas Frecuentes</h2>
+          <p>Resolvemos tus dudas antes de realizar tu pedido en Santa Cruz.</p>
         </div>
 
-        <div class="filter-bar" role="group" aria-label="Filtrar platos típicos por categoría">
-          <button type="button" class="filter-btn active" data-filter="todos">Todos los Platos</button>
-          <button type="button" class="filter-btn" data-filter="oriental">Tradición Oriental</button>
-          <button type="button" class="filter-btn" data-filter="valles">Valles y Altiplano</button>
-          <button type="button" class="filter-btn" data-filter="eventos">Pedidos Especiales</button>
-        </div>
-
-        <div class="portfolio-grid" id="dishesGrid">
-          <!-- Plato 1 -->
-          <div class="dish-card-wrapper" data-category="oriental">
-            <article class="dish-card">
-              <div class="dish-card-top">
-                <div class="milestone-icon" aria-hidden="true">
-                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M3 14h18a9 9 0 0 1-18 0z"/>
-                    <path d="M7 10c0-2 2-3 2-5M12 10c0-2 2-3 2-5M17 10c0-2 2-3 2-5"/>
-                  </svg>
-                </div>
-                <div>
-                  <span class="dish-tag">Tradición Oriental</span>
-                  <h3>Majadito Batido o Tostado</h3>
-                  <p class="dish-desc">Preparado con charque seleccionado, arroz graneado con urucú, acompañado de huevo frito y plátano maduro frito.</p>
-                </div>
-              </div>
-              <a href="https://wa.me/59162016619?text=Hola%20La%20mesa%20boliviana%2C%20me%20interesa%20consultar%20por%20el%20Majadito." target="_blank" rel="noopener noreferrer" class="btn btn-outline">Consultar por este plato</a>
-            </article>
+        <div class="faq-list" id="faq-container">
+          <div class="faq-item">
+            <button class="faq-btn" type="button" aria-expanded="false" aria-controls="faq-panel-1">
+              <span>¿Qué platos típicos bolivianos preparan?</span>
+              <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </button>
+            <div class="faq-panel" id="faq-panel-1" hidden>
+              Preparamos una selección rotativa y especialidades clásicas de la gastronomía boliviana. Escríbenos por WhatsApp para recibir el menú actualizado del día con disponibilidad inmediata.
+            </div>
           </div>
 
-          <!-- Plato 2 -->
-          <div class="dish-card-wrapper" data-category="valles">
-            <article class="dish-card">
-              <div class="dish-card-top">
-                <div class="milestone-icon" aria-hidden="true">
-                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="13" r="8"/>
-                    <path d="M12 5v3M8 6l1.5 2.5M16 6l-1.5 2.5"/>
-                  </svg>
-                </div>
-                <div>
-                  <span class="dish-tag">Valles y Altiplano</span>
-                  <h3>Pique Macho Tradicional</h3>
-                  <p class="dish-desc">Trozos jugosos de carne de res salteada con cebolla, tomate, locoto, salchicha, papas fritas doradas y huevo duro.</p>
-                </div>
-              </div>
-              <a href="https://wa.me/59162016619?text=Hola%20La%20mesa%20boliviana%2C%20me%20interesa%20consultar%20por%20el%20Pique%20Macho." target="_blank" rel="noopener noreferrer" class="btn btn-outline">Consultar por este plato</a>
-            </article>
+          <div class="faq-item">
+            <button class="faq-btn" type="button" aria-expanded="false" aria-controls="faq-panel-2">
+              <span>¿Cómo puedo hacer mi pedido o consultar precios?</span>
+              <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </button>
+            <div class="faq-panel" id="faq-panel-2" hidden>
+              Es muy sencillo: utiliza el formulario rápido de abajo o pulsa el botón de WhatsApp. Te responderemos de inmediato con los platos disponibles, precios del día y opciones de entrega o recojo.
+            </div>
           </div>
 
-          <!-- Plato 3 -->
-          <div class="dish-card-wrapper" data-category="oriental">
-            <article class="dish-card">
-              <div class="dish-card-top">
-                <div class="milestone-icon" aria-hidden="true">
-                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M4 12h16v3a6 6 0 0 1-6 6h-4a6 6 0 0 1-6-6v-3z"/>
-                    <path d="M8 7h8"/>
-                  </svg>
-                </div>
-                <div>
-                  <span class="dish-tag">Tradición Oriental</span>
-                  <h3>Locro Carretero</h3>
-                  <p class="dish-desc">Sopa sustanciosa de arroz, charque, plátano verde y yuca con el toque justo de urucú y cebollita verde fresca.</p>
-                </div>
-              </div>
-              <a href="https://wa.me/59162016619?text=Hola%20La%20mesa%20boliviana%2C%20me%20interesa%20consultar%20por%20el%20Locro%20Carretero." target="_blank" rel="noopener noreferrer" class="btn btn-outline">Consultar por este plato</a>
-            </article>
-          </div>
-
-          <!-- Plato 4 -->
-          <div class="dish-card-wrapper" data-category="valles">
-            <article class="dish-card">
-              <div class="dish-card-top">
-                <div class="milestone-icon" aria-hidden="true">
-                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <ellipse cx="12" cy="14" rx="9" ry="5"/>
-                    <path d="M7 11c2-3 8-3 10 0"/>
-                  </svg>
-                </div>
-                <div>
-                  <span class="dish-tag">Valles y Altiplano</span>
-                  <h3>Sajta de Pollo</h3>
-                  <p class="dish-desc">Presas tiernas de pollo cocidas en ahogado de ají amarillo boliviano, acompañadas de tunta rebosada, papa blanca y sarza.</p>
-                </div>
-              </div>
-              <a href="https://wa.me/59162016619?text=Hola%20La%20mesa%20boliviana%2C%20me%20interesa%20consultar%20por%20la%20Sajta%20de%20Pollo." target="_blank" rel="noopener noreferrer" class="btn btn-outline">Consultar por este plato</a>
-            </article>
-          </div>
-
-          <!-- Plato 5 -->
-          <div class="dish-card-wrapper" data-category="valles">
-            <article class="dish-card">
-              <div class="dish-card-top">
-                <div class="milestone-icon" aria-hidden="true">
-                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M5 13h14l-1.5 6h-11L5 13z"/>
-                    <path d="M8 13V9a4 4 0 0 1 8 0v4"/>
-                  </svg>
-                </div>
-                <div>
-                  <span class="dish-tag">Valles y Altiplano</span>
-                  <h3>Silpancho Cochabambino</h3>
-                  <p class="dish-desc">Carne apanada fina y crujiente servida sobre cama de arroz y papas doradas, coronada con huevo frito y ensalada fresca.</p>
-                </div>
-              </div>
-              <a href="https://wa.me/59162016619?text=Hola%20La%20mesa%20boliviana%2C%20me%20interesa%20consultar%20por%20el%20Silpancho." target="_blank" rel="noopener noreferrer" class="btn btn-outline">Consultar por este plato</a>
-            </article>
-          </div>
-
-          <!-- Plato 6 -->
-          <div class="dish-card-wrapper" data-category="eventos">
-            <article class="dish-card">
-              <div class="dish-card-top">
-                <div class="milestone-icon" aria-hidden="true">
-                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <rect x="3" y="8" width="18" height="11" rx="2"/>
-                    <path d="M8 8V6a4 4 0 0 1 8 0v2"/>
-                  </svg>
-                </div>
-                <div>
-                  <span class="dish-tag">Pedidos Especiales</span>
-                  <h3>Banquetes y Reuniones Familiares</h3>
-                  <p class="dish-desc">Preparamos fuentes y pedidos personalizados de platos típicos bolivianos para celebraciones, almuerzos corporativos y eventos.</p>
-                </div>
-              </div>
-              <a href="https://wa.me/59162016619?text=Hola%20La%20mesa%20boliviana%2C%20quisiera%20cotizar%20un%20pedido%20especial%20para%20reuni%C3%B3n." target="_blank" rel="noopener noreferrer" class="btn btn-primary">Solicitar Cotización</a>
-            </article>
+          <div class="faq-item">
+            <button class="faq-btn" type="button" aria-expanded="false" aria-controls="faq-panel-3">
+              <span>¿Realizan pedidos para grupos o eventos familiares?</span>
+              <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </button>
+            <div class="faq-panel" id="faq-panel-3" hidden>
+              Sí, atendemos tanto pedidos individuales como encargos familiares o corporativos en Santa Cruz, Bolivia. Contáctanos con anticipación para coordinar la cantidad de porciones que necesitas.
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SECCIÓN 4: CARRUSEL NATIVO DE EXPERIENCIAS -->
-    <section id="experiencias" class="testimonials-section">
-      <div class="container">
-        <div class="section-header">
-          <span class="badge">Lo que dicen nuestros comensales</span>
-          <h2>Sabor que conquista cada mesa en Santa Cruz</h2>
-          <p>Desliza para conocer la experiencia de quienes disfrutan nuestra cocina tradicional.</p>
-        </div>
-
-        <div class="snap-carousel" role="region" aria-label="Reseñas de clientes">
-          <article class="snap-item">
-            <div>
-              <div class="stars" aria-label="Calificación 5 de 5 estrellas">★★★★★</div>
-              <p style="margin-block-start: 0.75rem;">"El majadito tiene el verdadero sabor casero de antaño. Las porciones son generosas y siempre llega caliente y bien presentado."</p>
-            </div>
-            <p class="author-meta">— Comensal en Santa Cruz de la Sierra</p>
-          </article>
-
-          <article class="snap-item">
-            <div>
-              <div class="stars" aria-label="Calificación 5 de 5 estrellas">★★★★★</div>
-              <p style="margin-block-start: 0.75rem;">"Pedimos platos típicos para una reunión familiar de domingo y todos quedaron encantados con la sazón de la sajta y el pique macho."</p>
-            </div>
-            <p class="author-meta">— Cliente de Pedido Familiar</p>
-          </article>
-
-          <article class="snap-item">
-            <div>
-              <div class="stars" aria-label="Calificación 5 de 5 estrellas">★★★★★</div>
-              <p style="margin-block-start: 0.75rem;">"Atención rápida por WhatsApp y puntualidad en la entrega. Se nota el cariño y la calidad de los ingredientes en cada preparación."</p>
-            </div>
-            <p class="author-meta">— Cliente Habitual</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECCIÓN 5: AGENDAMIENTO / CONSULTA DIRECTA -->
-    <section id="contacto">
+    <!-- CAJA DE CONVERSIÓN FINAL -->
+    <section id="pedir-ahora">
       <div class="container">
         <div class="cta-box">
-          <h2>¿Antojo de un auténtico plato típico boliviano hoy?</h2>
-          <p>Escríbenos directamente por WhatsApp para conocer el menú disponible del día, consultar precios o agendar tu pedido en Santa Cruz, Bolivia.</p>
-          <a href="https://wa.me/59162016619?text=Hola%20La%20mesa%20boliviana%2C%20quisiera%20hacer%20una%20consulta%20o%20pedido." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp-hero">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
-            </svg>
-            Escribir al +591 62016619
-          </a>
+          <div>
+            <h2>¿Listo para disfrutar un buen plato típico hoy?</h2>
+            <p>
+              Escríbenos directamente a nuestro WhatsApp en Santa Cruz, Bolivia. Te enviaremos el menú del día al instante para que elijas tu plato favorito.
+            </p>
+            <a id="direct-wa-link" href="https://wa.me/59162016619?text=Hola%20La%20mesa%20boliviana%2C%20quisiera%20conocer%20los%20platos%20t%C3%ADpicos%20disponibles%20hoy." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+              </svg>
+              Escribir al +591 62016619
+            </a>
+          </div>
+
+          <form class="order-form" id="quick-order-form">
+            <h3>Consulta Rápida por WhatsApp</h3>
+            <div class="form-group">
+              <label for="customer-name">Tu Nombre</label>
+              <input class="form-control" type="text" id="customer-name" name="name" placeholder="Ej. Carlos Mendoza" required>
+            </div>
+            <div class="form-group">
+              <label for="order-type">¿Qué deseas consultar?</label>
+              <select class="form-control" id="order-type" name="type">
+                <option value="Menú del día y precios">Menú del día y precios</option>
+                <option value="Pedido para hoy (entrega / recojo)">Pedido para hoy (entrega / recojo)</option>
+                <option value="Encargo para reunión o familia">Encargo para reunión o familia</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%;">
+              Enviar Consulta a WhatsApp
+            </button>
+          </form>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <p><strong>La mesa boliviana</strong> — Platos Típicos Bolivianos</p>
-      <p style="margin-block-start: 0.35rem;">Santa Cruz, Bolivia • WhatsApp: +591 62016619</p>
+  <footer>
+    <div class="container footer-inner">
+      <strong>La mesa boliviana</strong>
+      <span class="footer-location">Platos Típicos Bolivianos • Santa Cruz, Bolivia</span>
+      <span>WhatsApp de atención: +591 62016619</span>
     </div>
   </footer>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // 1. Menú móvil accesible
-      const menuToggle = document.getElementById('menuToggle');
-      const primaryNav = document.getElementById('primaryNav');
+      // 1. Acordeón FAQ accesible mediante delegación de eventos
+      const faqContainer = document.getElementById('faq-container');
+      if (faqContainer) {
+        faqContainer.addEventListener('click', (event) => {
+          const btn = event.target.closest('.faq-btn');
+          if (!btn) return;
 
-      if (menuToggle && primaryNav) {
-        menuToggle.addEventListener('click', () => {
-          const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
-          menuToggle.setAttribute('aria-expanded', String(!isExpanded));
-          primaryNav.classList.toggle('open');
-        });
+          const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+          const panelId = btn.getAttribute('aria-controls');
+          const panel = document.getElementById(panelId);
 
-        primaryNav.addEventListener('click', (event) => {
-          if (event.target.tagName === 'A' && primaryNav.classList.contains('open')) {
-            primaryNav.classList.remove('open');
-            menuToggle.setAttribute('aria-expanded', 'false');
+          btn.setAttribute('aria-expanded', String(!isExpanded));
+          if (panel) {
+            panel.hidden = isExpanded;
           }
         });
       }
 
-      // 2. Filtrado interactivo del portafolio de platos típicos (Delegación de eventos)
-      const filterBar = document.querySelector('.filter-bar');
-      const dishCards = document.querySelectorAll('.dish-card-wrapper');
+      // 2. Formulario de consulta rápida con sanitización OWASP y encodeURIComponent
+      const orderForm = document.getElementById('quick-order-form');
+      if (orderForm) {
+        orderForm.addEventListener('submit', (event) => {
+          event.preventDefault();
 
-      if (filterBar) {
-        filterBar.addEventListener('click', (event) => {
-          const button = event.target.closest('.filter-btn');
-          if (!button) return;
+          const nameInput = document.getElementById('customer-name');
+          const typeSelect = document.getElementById('order-type');
 
-          const selectedCategory = button.dataset.filter;
+          const rawName = nameInput ? nameInput.value.trim() : '';
+          const rawType = typeSelect ? typeSelect.value.trim() : 'Menú del día';
 
-          filterBar.querySelectorAll('.filter-btn').forEach((btn) => {
-            btn.classList.remove('active');
-          });
-          button.classList.add('active');
+          if (!rawName) {
+            nameInput.focus();
+            return;
+          }
 
-          dishCards.forEach((card) => {
-            const cardCategory = card.dataset.category;
-            if (selectedCategory === 'todos' || cardCategory === selectedCategory) {
-              card.hidden = false;
-            } else {
-              card.hidden = true;
-            }
-          });
+          const phone = '59162016619';
+          const message = `Hola La mesa boliviana, mi nombre es ${rawName}. Me gustaría consultar sobre: ${rawType}.`;
+          const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+
+          if (whatsappUrl.startsWith('https://wa.me/')) {
+            window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+          }
         });
       }
     });
